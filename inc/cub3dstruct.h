@@ -1,0 +1,57 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3dstruct.h                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/07 02:11:13 by tgoel             #+#    #+#             */
+/*   Updated: 2022/12/08 11:41:25 by tgoel            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef CUB3DSTRUCT_H
+# define CUB3DSTRUCT_H
+
+# include "cub3d.h"
+
+typedef struct S_raycast
+{
+	float	x;
+	float	y;
+
+}	t_raycast;
+
+typedef struct S_player
+{
+	float	x;
+	float	y;
+}	t_player;
+
+typedef struct S_map
+{
+	char	**map;
+	char	*file;
+	char	*map_array;
+}	t_map;
+
+typedef struct S_textures
+{
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+	char	*f;
+	char	*c;
+}	t_textures;
+
+typedef struct S_all
+{
+	char		*path_to_map;
+	t_map		map;
+	t_textures	txtr;
+	t_player	player;
+	t_raycast	*raycast;
+}	t_all;
+
+#endif
