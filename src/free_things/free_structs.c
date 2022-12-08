@@ -12,20 +12,23 @@
 
 #include "../../inc/cub3d.h"
 
+void	free_null(char **str)
+{
+	if (*str)
+	{
+		free(*str);
+		*str = NULL;	
+	}
+}
+
 void	free_textures(t_all *all)
 {
-	if (all->txtr.no)
-		free(all->txtr.no);
-	if (all->txtr.so)
-		free(all->txtr.so);
-	if (all->txtr.we)
-		free(all->txtr.we);
-	if (all->txtr.ea)
-		free(all->txtr.ea);
-	if (all->txtr.f)
-		free(all->txtr.f);
-	if (all->txtr.c)
-		free(all->txtr.c);
+	free_null(&all->txtr.no);
+	free_null(&all->txtr.so);
+	free_null(&all->txtr.we);
+	free_null(&all->txtr.ea);
+	free_null(&all->txtr.f);
+	free_null(&all->txtr.c);
 }
 
 void	free_double_tab(char **str)
@@ -33,19 +36,19 @@ void	free_double_tab(char **str)
 	int	i;
 
 	i = -1;
-	while (str[++i])
-		free(str[i]);
+	if (str)
+	{
+		while (str[++i])
+			free_null(&str[i]);
+	}
 	free(str);
 }
 
 void	free_map(t_all *all)
 {
-	if (all->map.file)
-		free(all->map.file);
-	if (all->map.map_array)
-		free(all->map.map_array);
-	if (all->map.map)
-		free_double_tab(all->map.map);
+	free_null(&all->map.file);
+	free_null(&all->map.map_array);
+	free_double_tab(all->map.map);
 }
 
 void	free_all(void)
