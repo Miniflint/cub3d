@@ -17,7 +17,6 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <fcntl.h>
-# include "../minilib/mlx.h"
 # include "cub3dstruct.h"
 
 // GET ALL
@@ -30,6 +29,7 @@ int		__init__(t_all *all);
 char	*read_map(char *path_map);
 char	*cut_strstr_dup(char *str, int c);
 int		check_ext(char *path);
+char	*ft_strstr_map(char *s1, char *substr);
 
 // FREE
 void	free_all(void);

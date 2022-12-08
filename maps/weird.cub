@@ -1,0 +1,14 @@
+
+F 220,100,0
+C 225,30,0
+WE ./texture/west
+EA ./texture/east
+NO ./texture/north
+SO ./texture/south
+
+		11111111
+	100000000001
+10000000000001
+100000000N1
+10000001
+11111111

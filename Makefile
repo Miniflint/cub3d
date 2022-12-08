@@ -7,7 +7,6 @@ MDIR	= $(SDIR)/main
 PDIR	= $(SDIR)/parse
 UDIR	= $(SDIR)/utils
 FDIR	= $(SDIR)/free_things
-MLXDIR	= minilib
 
 MSRCS	= main.c 
 PSRCS	= check_map.c cut_strstr.c check_map_errors.c
@@ -20,7 +19,6 @@ UTILS	= $(addprefix $(UDIR)/,$(USRCS))
 FREE	= $(addprefix $(FDIR)/,$(FSRCS))
 FILES	= $(MAIN) $(UTILS) $(PARSE) $(FREE)
 OBJS	= $(FILES:.c=.o)
-MLIB	= $(MLXDIR)/libmlx.a
 CFLAGS	= -Wall -Werror -Wextra 
 
 ifeq ($(DEBUG), debug)
@@ -33,18 +31,12 @@ all: $(NAME)
 
 %.o: %.c
 	@printf "$(YELLOW)Generating cub3d objects... %-43.333s \r" $@
-	@$(CC) -Imlx -c $< -o $@
+	@$(CC) -c $< -o $@
 
-minilibmake:
-	@echo "$(GREEN)\n\nCompiling minilib..."
-	@make -C $(MLXDIR)
-	@echo "$(GREEN)Done"
-
-$(NAME): $(OBJS) minilibmake
+$(NAME): $(OBJS)
 	@echo "$(GREEN)\n\nCompiling cub3d..."
-	@$(CC) -I$(MLXDIR) -L$(MLXDIR) -lmlx -framework OpenGL -framework AppKit $(OBJS) -o $(NAME) $(MLIB)
+	@$(CC) $(OBJS) -o $(NAME)
 	@echo "$(GREEN)Done"
-
 
 clean:
 	@echo "$(RED)\nDeleting objects..."
@@ -56,4 +48,4 @@ fclean: clean
 
 re: fclean all 
 
-.PHONY:	clean fclean all re minilibmake
+.PHONY:	clean fclean all re 

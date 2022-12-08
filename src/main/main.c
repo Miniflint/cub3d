@@ -31,6 +31,7 @@ int	main(int argc, char **argv)
 	all.path_to_map = argv[1];
 	__init__(&all);
 	//test();
+	printf("%s\n", all.map.map_array);
 	free_all();
 	return (0);
 }
