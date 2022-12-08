@@ -20,6 +20,10 @@
 
 static int	__init_textures(t_all *all)
 {
+	int	i;
+	char	*tmp1;
+	char	*tmp2;
+
 	all->txtr.no = cut_strstr_dup(ft_strstr(all->map.file, "NO") + 2, '\n');
 	all->txtr.so = cut_strstr_dup(ft_strstr(all->map.file, "SO") + 2, '\n');
 	all->txtr.we = cut_strstr_dup(ft_strstr(all->map.file, "WE") + 2, '\n');
@@ -29,6 +33,16 @@ static int	__init_textures(t_all *all)
 	if (!all->txtr.no || !all->txtr.so || !all->txtr.we || !all->txtr.ea
 		|| !all->txtr.f || !all->txtr.c)
 		return (1);
+	i = -1;
+	tmp1 = all->txtr.c;
+	tmp2 = all->txtr.f;
+	while (++i < 3)
+	{
+		all->txtr.c_int[i] = ft_atoi(tmp1);
+		all->txtr.f_int[i] = ft_atoi(tmp2);
+		tmp1 = tmp1 + ft_strlen_uc(tmp1, ',') + 1;
+		tmp2 = tmp2 + ft_strlen_uc(tmp2, ',') + 1;
+	}
 	return (0);
 }
 
@@ -39,8 +53,6 @@ static int	__init_map(t_all *all)
 	all->map.file = read_map(all->path_to_map);
 	if (!all->map.file)
 		handle_error("Couldn't reading the map");
-	if (__init_textures(all))
-		handle_error("Couldn't init textures");
 	all->map.map_array = cut_strstr_dup(ft_strstr_map(all->map.file, "11"), '\0');
 	if (!all->map.map_array)
 		handle_error ("No map available");
@@ -70,5 +82,7 @@ int	__init__(t_all *all)
 	everything_null(all);
 	if (__init_map(all))
 		return (1);
+	if (__init_textures(all))
+		handle_error("Couldn't init textures");
 	return (0);
 }

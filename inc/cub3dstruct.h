@@ -43,6 +43,8 @@ typedef struct S_textures
 	char	*ea;
 	char	*f;
 	char	*c;
+	int	f_int[3];
+	int	c_int[3];
 }	t_textures;
 
 typedef struct S_all

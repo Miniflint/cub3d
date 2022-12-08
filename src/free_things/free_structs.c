@@ -42,6 +42,7 @@ void	free_double_tab(char **str)
 			free_null(&str[i]);
 	}
 	free(str);
+	str = NULL;
 }
 
 void	free_map(t_all *all)

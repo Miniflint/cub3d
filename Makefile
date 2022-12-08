@@ -10,7 +10,7 @@ FDIR	= $(SDIR)/free_things
 
 MSRCS	= main.c 
 PSRCS	= check_map.c cut_strstr.c check_map_errors.c get_map.c
-USRCS	= ft_get_all.c __init__.c ft_strjoin.c ft_strlen.c ft_strdup.c ft_strstr.c
+USRCS	= ft_get_all.c __init__.c ft_strjoin.c ft_strlen.c ft_strdup.c ft_strstr.c ft_atoi.c
 FSRCS	= free_structs.c handle_error.c
 
 MAIN	= $(addprefix $(MDIR)/,$(MSRCS))

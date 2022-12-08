@@ -39,6 +39,7 @@ void	free_textures(t_all *all);
 void	handle_error(char *str);
 
 // UTILS
+int		ft_atoi(char *str);
 int		ft_strlen(char *str);
 int		ft_strlen_uc(char *str, char c);
 int		check_map_height(char *str);
@@ -46,4 +47,5 @@ char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strdup(char *str);
 char	*ft_strldup(char *str, int size);
 char	*ft_strstr(char *s1, char *substr);
+
 #endif
