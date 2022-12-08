@@ -19,3 +19,13 @@ int	ft_strlen(char *str)
 		i++;
 	return (i);
 }
+
+int	ft_strlen_uc(char *str, char c)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] && str[i] != c)
+		i++;
+	return (i);
+}

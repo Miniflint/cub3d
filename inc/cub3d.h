@@ -30,6 +30,7 @@ char	*read_map(char *path_map);
 char	*cut_strstr_dup(char *str, int c);
 int		check_ext(char *path);
 char	*ft_strstr_map(char *s1, char *substr);
+char	**get_map(t_all *all);
 
 // FREE
 void	free_all(void);
@@ -39,9 +40,10 @@ void	handle_error(char *str);
 
 // UTILS
 int		ft_strlen(char *str);
+int		ft_strlen_uc(char *str, char c);
+int		check_map_height(char *str);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strdup(char *str);
 char	*ft_strldup(char *str, int size);
 char	*ft_strstr(char *s1, char *substr);
-
 #endif

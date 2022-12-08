@@ -44,6 +44,9 @@ static int	__init_map(t_all *all)
 	all->map.map_array = cut_strstr_dup(ft_strstr_map(all->map.file, "11"), '\0');
 	if (!all->map.map_array)
 		handle_error ("No map available");
+	all->map.map = get_map(all);
+	if (!all->map.map)
+		handle_error("Error init double array");
 	return (0);
 }
 

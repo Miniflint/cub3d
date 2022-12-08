@@ -28,6 +28,16 @@ void	free_textures(t_all *all)
 		free(all->txtr.c);
 }
 
+void	free_double_tab(char **str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		free(str[i]);
+	free(str);
+}
+
 void	free_map(t_all *all)
 {
 	if (all->map.file)
@@ -35,7 +45,7 @@ void	free_map(t_all *all)
 	if (all->map.map_array)
 		free(all->map.map_array);
 	if (all->map.map)
-		free(all->map.map);
+		free_double_tab(all->map.map);
 }
 
 void	free_all(void)
