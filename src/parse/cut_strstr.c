@@ -19,6 +19,8 @@ char	*cut_strstr_dup(char *str, int c)
 	i = 0;
 	if (!str || !str[0])
 		return (NULL);
+	while (str[i] == ' ')
+		str++;
 	while (str[i] && str[i] != c)
 		i++;
 	return (ft_strldup(str, i));
