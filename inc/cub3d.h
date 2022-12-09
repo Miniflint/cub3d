@@ -26,11 +26,12 @@ t_all	*ft_get_all(t_all *all);
 int		__init__(t_all *all);
 
 // PARSE
-char	*read_map(char *path_map);
-char	*cut_strstr_dup(char *str, int c, int map);
 int		check_ext(char *path);
-char	*ft_strstr_map(char *s1, char *substr);
+int		check_walls(char **map);
 char	**get_map(t_all *all);
+char	*read_map(char *path_map);
+char	*ft_strstr_map(char *s1, char *substr);
+char	*cut_strstr_dup(char *str, int c, int map);
 
 // FREE
 void	free_all(void);

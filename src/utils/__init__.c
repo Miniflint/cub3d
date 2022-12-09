@@ -18,7 +18,7 @@
 	INIT MAP
 */
 
-int	__util_txtr_init(t_all *all)
+static int	__util_txtr_init(t_all *all)
 {
 	int	i;
 	char	*tmp[2];
@@ -32,7 +32,9 @@ int	__util_txtr_init(t_all *all)
 	{
 		all->txtr.c_int[i] = ft_atoi(tmp[0]);
 		all->txtr.f_int[i] = ft_atoi(tmp[1]);
-		if (all->txtr.c_int[i] < 0|| all->txtr.f_int[i] < 0)
+		if (all->txtr.c_int[i] < 0 || all->txtr.f_int[i] < 0)
+			return (1);
+		if (all->txtr.c_int[i] > 255 || all->txtr.f_int[i] > 255)
 			return (1);
 		tmp[0] += ft_strlen_uc(tmp[0], ',') + 1;
 		tmp[1] += ft_strlen_uc(tmp[1], ',') + 1;
@@ -50,9 +52,9 @@ static int	__init_textures(t_all *all)
 	all->txtr.c = cut_strstr_dup(ft_strstr(all->map.file, "C") + 1, '\n', 0);
 	if (!all->txtr.no || !all->txtr.so || !all->txtr.we || !all->txtr.ea
 		|| !all->txtr.f || !all->txtr.c)
-		return (1);
+		handle_error("Couldn't get textures");
 	if (__util_txtr_init(all))
-		return (1);
+		handle_error("Problem getting colors");
 	return (0);
 }
 
@@ -72,14 +74,12 @@ static int	__init_map(t_all *all)
 	return (0);
 }
 
-
-
 int	__init__(t_all *all)
 {
 	everything_null(all);
 	if (__init_map(all))
 		return (1);
-	if (__init_textures(all))
-		handle_error("Couldn't init textures");
+	if(__init_textures(all))
+		return (1);
 	return (0);
 }
