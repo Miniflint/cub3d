@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   nully.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/09 13:50:11 by tgoel             #+#    #+#             */
+/*   Updated: 2022/12/09 13:51:11 by tgoel            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3d.h"
 
 static void	txtr_nully(t_all *all)
@@ -33,6 +45,7 @@ static void	player_nully(t_all *all)
 
 void	everything_null(t_all *all)
 {
+	all->raycast = NULL;
 	txtr_nully(all);
 	map_nully(all);
 	player_nully(all);

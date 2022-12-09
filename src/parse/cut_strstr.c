@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:01:13 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/08 11:49:58 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/09 13:59:31 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,7 @@ char	*cut_strstr_dup(char *str, int c, int map)
 			str++;
 	while (str[i] && str[i] != c)
 		i++;
+	if (i == 0)
+		return (NULL);
 	return (ft_strldup(str, i));
 }

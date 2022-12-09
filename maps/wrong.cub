@@ -1,6 +1,6 @@
 
 F        220,100,0
-C225,200
+C225,200,50
 WE            ./texture/west
 EA./texture/east
 NO		./texture/north
