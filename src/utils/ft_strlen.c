@@ -25,7 +25,24 @@ int	ft_strlen_uc(char *str, char c)
 	int	i;
 
 	i = 0;
+	if (!str || !str[i])
+		return (-1);
 	while (str[i] && str[i] != c)
 		i++;
 	return (i);
+}
+
+int	ft_occurence(char *str, char c)
+{
+	int	i;
+	int	occurence;
+
+	i = -1;
+	occurence = 0;
+	if (!str)
+		return (-1);
+	while (str[++i])
+		if (str[i] == c)
+			occurence++;
+	return (occurence);
 }

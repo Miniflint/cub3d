@@ -1,14 +1,14 @@
 
-F 220,100,0
-C 225,30,0
-WE ./texture/west
-EA ./texture/east
-NO ./texture/north
-SO ./texture/south
+F        220,100,0
+C225,30
+WE            ./texture/west
+EA./texture/east
+NO		./texture/north
+SO                         ./texture/south
 
-		11111111
-	100000000001
-10000000000001
-100000000N1
-10000001
+         1111111111111111
+    111111100000000001
+1111100000000000011111
+100000000N1111111
+1000000111111
 11111111

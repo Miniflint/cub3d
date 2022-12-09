@@ -12,15 +12,16 @@
 
 #include "../../inc/cub3d.h"
 
-char	*cut_strstr_dup(char *str, int c)
+char	*cut_strstr_dup(char *str, int c, int map)
 {
 	int	i;
 
 	i = 0;
 	if (!str || !str[0])
 		return (NULL);
-	while (str[i] == ' ')
-		str++;
+	if (!map)
+		while (str[i] == ' ' || str[i] == '\t')
+			str++;
 	while (str[i] && str[i] != c)
 		i++;
 	return (ft_strldup(str, i));

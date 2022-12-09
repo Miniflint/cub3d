@@ -30,9 +30,9 @@ typedef struct S_player
 
 typedef struct S_map
 {
-	char	**map;
 	char	*file;
 	char	*map_array;
+	char	**map;
 }	t_map;
 
 typedef struct S_textures
