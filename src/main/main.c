@@ -15,10 +15,22 @@
 void	test(void)
 {
 	t_all	*all;
+	int	i;
 
 	all = ft_get_all(NULL);
-	printf("%s\n%s\n%s\n", all->txtr.no, all->txtr.so, all->txtr.we);
-	printf("%s\n%s\n%s\n", all->txtr.ea, all->txtr.f, all->txtr.c);
+	printf("Textures: \n");
+	printf("\t%s\n\t%s\n\t%s\n\t%s\n", all->txtr.no, all->txtr.so,
+			all->txtr.we, all->txtr.ea);
+	printf("\n(Char) F and C\n");
+	printf("\t%s\n\t%s\n", all->txtr.f, all->txtr.c);
+	i = -1;
+	printf("\n(Int) F and C\n");
+	printf("\t%i,%i,%i\n", all->txtr.f_int[0], all->txtr.f_int[1],
+			all->txtr.f_int[2]);
+	printf("\t%i,%i,%i\n\n", all->txtr.c_int[0], all->txtr.c_int[1],
+			all->txtr.c_int[2]);
+	while (all->map.map[++i])
+		printf("map[%i]: %s\n", i, all->map.map[i]);
 }
 
 int	main(int argc, char **argv)
@@ -30,8 +42,7 @@ int	main(int argc, char **argv)
 	ft_get_all(&all);
 	all.path_to_map = argv[1];
 	__init__(&all);
-	//test();
-	printf("%s\n", all.map.map_array);
+	test();
 	free_all();
 	return (0);
 }
