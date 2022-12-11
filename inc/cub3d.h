@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:02:57 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/08 12:24:26 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/11 15:45:39 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@
 # include <fcntl.h>
 # include "cub3dstruct.h"
 
+#define FILL '-'
+
 // GET ALL
 t_all	*ft_get_all(t_all *all);
+void	test(void);
 
 // INIT
 int		__init__(t_all *all);
@@ -28,27 +31,33 @@ int		__init__(t_all *all);
 // PARSE
 int		check_ext(char *path);
 int		check_walls(char **map);
+int		check_nb_player(char *str);
+int		check_map_height(char *str);
+int		check_view_player(t_all *all);
+char	check_player_letter(char *str);
 char	**get_map(t_all *all);
 char	*read_map(char *path_map);
 char	*ft_strstr_map(char *s1, char *substr);
 char	*cut_strstr_dup(char *str, int c, int map);
+void	check_path_player(char **map, int row, int col, char value);
 
 // FREE
 void	free_all(void);
 void	free_map(t_all *all);
-void	free_textures(t_all *all);
 void	handle_error(char *str);
+void	free_textures(t_all *all);
 void	everything_null(t_all *all);
+void	free_double_tab(char **str);
 
 // UTILS
 int		ft_atoi(char *str);
 int		ft_strlen(char *str);
-int		check_map_height(char *str);
 int		ft_occurence(char *str, char c);
 int		ft_strlen_uc(char *str, char c);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strdup(char *str);
 char	*ft_strldup(char *str, int size);
 char	*ft_strstr(char *s1, char *substr);
+char	**cp_map(char **map, int height_map);
 
 #endif

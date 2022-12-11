@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cut_strstr.c                                       :+:      :+:    :+:   */
+/*   check_map_valid.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/08 11:01:13 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/11 15:38:00 by tgoel            ###   ########.fr       */
+/*   Created: 2022/12/11 15:58:16 by tgoel             #+#    #+#             */
+/*   Updated: 2022/12/11 16:26:33 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-char	*cut_strstr_dup(char *str, int c, int map)
-{
-	int	i;
-
-	i = 0;
-	if (!str || !str[0])
-		return (NULL);
-	if (!map)
-		while (str[i] == ' ' || str[i] == '\t')
-			str++;
-	while (str[i] && str[i] != c)
-		i++;
-	if (i == 0)
-		return (NULL);
-	return (ft_strldup(str, i));
-}
+// int	check_map_open(char **modified_map)
+// {
+// 	if ()
+// }

@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:11:13 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/08 11:41:25 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/11 15:13:55 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,16 @@ typedef struct S_raycast
 
 typedef struct S_player
 {
+	char	letter;
+	int	start_x;
+	int	start_y;
 	float	x;
 	float	y;
 }	t_player;
 
 typedef struct S_map
 {
+	int		map_height;
 	char	*file;
 	char	*map_array;
 	char	**map;
