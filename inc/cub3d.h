@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:02:57 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/11 18:39:58 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/11 19:05:02 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int		__init__(t_all *all);
 /* PARSING */
 int		check_ext(char *path);
 int		check_walls(char **map);
+int		contains_fill(char *str);
 int		check_nb_player(char *str);
 int		check_map_height(char *str);
 int		check_view_player(t_all *all);

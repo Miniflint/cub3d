@@ -6,37 +6,11 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:33:22 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/11 18:31:33 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/11 19:07:15 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
-
-
-void	check_path_player(char **map, int row, int col, char letter)
-{
-	if (row < 0 || col < 0 || !map || !map[row] || !map[row][col])
-		return ;
-	if (map[row][col] == FILL || map[row][col] == '1' || map[row][col] == ' ')
-		return ;
-	if (map[row][col] != letter)
-			map[row][col] = FILL;
-	check_path_player(map, row - 1, col, letter);
-	check_path_player(map, row + 1, col, letter);
-	check_path_player(map, row, col - 1, letter);
-	check_path_player(map, row, col + 1, letter);
-	return ;
-}
-
-void print_double_tab(char **array_double)
-{
-	int	i;
-
-	i = -1;
-	while (array_double[++i])
-		printf("%s\n", array_double[i]);
-	printf("\n");
-}
 
 int	check_view_player(t_all *all)
 {
@@ -67,6 +41,17 @@ int	check_nb_player(char *str)
 	i += ft_occurence(str, 'W');
 	i += ft_occurence(str, 'E');
 	return (i);
+}
+
+int	contains_fill(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		if (str[i] == FILL)
+			return (1);
+	return (0);
 }
 
 int	check_ext(char *path)

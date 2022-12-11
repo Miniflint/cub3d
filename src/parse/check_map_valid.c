@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:58:16 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/11 18:17:48 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/11 19:01:14 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,9 @@ int	check_map_open(char **modified_map)
 	{
 		j = -1;
 		while (modified_map[i][++j])
-			if (norminette_i_hate_u(modified_map, i, j))
-				return (1);
+			if (modified_map[i][j] == FILL)
+				if (norminette_i_hate_u(modified_map, i, j))
+					return (1);
 	}
 	return (0);
 }

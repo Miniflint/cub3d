@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:28:30 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/11 18:50:52 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/11 19:05:56 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ static int	__init_map(t_all *all)
 	all->map.map_array = cut_strstr_dup(ft_strstr_map(all->map.file, "11"), '\0', 1);
 	if (!all->map.map_array)
 		handle_error("No map available");
+	if (contains_fill(all->map.map_array))
+		handle_error("Illegal char in map");
 	all->map.map = get_map(all);
 	if (!all->map.map)
 		handle_error("Error init double array");
