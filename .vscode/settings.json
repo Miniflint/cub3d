@@ -3,6 +3,7 @@
 		"cub3d.h": "c",
 		"fcntl.h": "c",
 		"__locale": "c",
-		"sstream": "c"
+		"sstream": "c",
+		"check_utils": "c"
 	}
 }

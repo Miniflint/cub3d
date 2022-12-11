@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:02:57 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/11 18:02:35 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/11 18:39:58 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,22 @@
 
 # define FILL '-'
 
-// GET ALL
+/* GET */
 void	test(void);
 t_all	*ft_get_all(t_all *all);
+void print_double_tab(char **array_double);
 
-// INIT
+/* INIT */
 int		__init__(t_all *all);
 
-// PARSE
+/* PARSING */
 int		check_ext(char *path);
 int		check_walls(char **map);
 int		check_nb_player(char *str);
 int		check_map_height(char *str);
 int		check_view_player(t_all *all);
 int		check_map_open(char **modified_map);
+int		*letter_pos_on_map(char **map, char letter, int i[2]);
 char	**get_map(t_all *all);
 char	*read_map(char *path_map);
 char	check_player_letter(char *str);
@@ -42,7 +44,7 @@ char	*ft_strstr_map(char *s1, char *substr);
 char	*cut_strstr_dup(char *str, int c, int map);
 void	check_path_player(char **map, int row, int col, char value);
 
-// FREE
+/* FREE */
 void	free_all(void);
 void	free_map(t_all *all);
 void	handle_error(char *str);
@@ -50,7 +52,7 @@ void	free_textures(t_all *all);
 void	everything_null(t_all *all);
 void	free_double_tab(char **str);
 
-// UTILS
+/* UTILS */
 int		ft_atoi(char *str);
 int		ft_strlen(char *str);
 int		ft_occurence(char *str, char c);

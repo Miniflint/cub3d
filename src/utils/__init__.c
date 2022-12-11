@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:28:30 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/11 15:55:37 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/11 18:50:52 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,19 @@ static int	__init_textures(t_all *all)
 
 static int	__init_player(t_all *all)
 {
+	int	pos[2];
+
 	if (check_nb_player(all->map.map_array))
 		handle_error("Too much / not enough player on the map");
 	all->player.letter = check_player_letter(all->map.map_array);
 	if (!all->player.letter)
 		handle_error("Couldn't find the player on the map");
+	letter_pos_on_map(all->map.map, all->player.letter, pos);
+	if (pos[0] == -1 || pos[1] == -1)
+		handle_error("Couldn't find the player on the map");
+	all->player.start_y = pos[0];
+	all->player.start_x = pos[1];
+	letter_pos_on_map(all->map.map, 'E', pos);
 	return (0);
 }
 
@@ -78,8 +86,6 @@ static int	__init_map(t_all *all)
 	all->map.map_array = cut_strstr_dup(ft_strstr_map(all->map.file, "11"), '\0', 1);
 	if (!all->map.map_array)
 		handle_error("No map available");
-	if(__init_player(all))
-		return (1);
 	all->map.map = get_map(all);
 	if (!all->map.map)
 		handle_error("Error init double array");
@@ -90,7 +96,9 @@ int	__init__(t_all *all)
 {
 	everything_null(all);
 	if (__init_map(all))
-		handle_error("Couldn't init the player");
+		return (1);
+	if(__init_player(all))
+		return (1);
 	if(__init_textures(all))
 		return (1);
 	check_view_player(all);

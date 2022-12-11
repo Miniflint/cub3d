@@ -1,33 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:35:03 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/11 17:53:29 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/11 18:28:49 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
-
-int	check_map_height(char *str)
-{
-	int	i;
-	int	height;
-
-	i = -1;
-	height = 0;
-	while (str[++i])
-	{
-		if (str[i] == '\n')
-			height++;
-	}
-	if (str[i] == '\0' && str[i - 1] != '\n')
-		height++;
-	return (height);
-}
 
 static char	*quick_read_map(int fd)
 {

@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:33:22 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/11 18:15:44 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/11 18:31:33 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,22 +67,6 @@ int	check_nb_player(char *str)
 	i += ft_occurence(str, 'W');
 	i += ft_occurence(str, 'E');
 	return (i);
-}
-
-char	check_player_letter(char *str)
-{
-	char	c;
-
-	c = 0;
-	if (ft_occurence(str, 'N'))
-		c = 'N';
-	else if (ft_occurence(str, 'S'))
-		c = 'S';
-	else if (ft_occurence(str, 'W'))
-		c = 'W';
-	else if (ft_occurence(str, 'E'))
-		c = 'E';
-	return (c);
 }
 
 int	check_ext(char *path)
