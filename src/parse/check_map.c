@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:35:03 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/11 15:22:21 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/11 17:53:29 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	check_map_height(char *str)
 		if (str[i] == '\n')
 			height++;
 	}
+	if (str[i] == '\0' && str[i - 1] != '\n')
+		height++;
 	return (height);
 }
 

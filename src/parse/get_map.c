@@ -6,13 +6,13 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:50:02 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/11 16:26:35 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/11 18:21:58 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-int	check_player_pos(char *str)
+int	check_letter_pos(char *str, char letter)
 {
 	t_all	*all;
 	int	i;
@@ -21,7 +21,7 @@ int	check_player_pos(char *str)
 	i = -1;
 	while (str[++i])
 	{
-		if (str[i] == all->player.letter)
+		if (str[i] == letter)
 		{
 			all->player.start_x = i;
 			return (1);
@@ -64,11 +64,10 @@ char	**get_map(t_all *all)
 	{
 		len_line = ft_strlen_uc(tmp, '\n');
 		map[i] = ft_strldup(tmp, len_line);
-		if (check_player_pos(map[i]))
+		if (check_letter_pos(map[i], all->player.letter))
 			all->player.start_y = i;
-		while (len_line--)
+		while (len_line-- >= 0)
 			tmp++;
-		tmp++;
 	}
 	map[i] = NULL;
 	return (map);

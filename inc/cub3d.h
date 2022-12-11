@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:02:57 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/11 17:00:16 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/11 18:02:35 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # define FILL '-'
 
 // GET ALL
-t_all	*ft_get_all(t_all *all);
 void	test(void);
+t_all	*ft_get_all(t_all *all);
 
 // INIT
 int		__init__(t_all *all);
@@ -34,9 +34,10 @@ int		check_walls(char **map);
 int		check_nb_player(char *str);
 int		check_map_height(char *str);
 int		check_view_player(t_all *all);
-char	check_player_letter(char *str);
+int		check_map_open(char **modified_map);
 char	**get_map(t_all *all);
 char	*read_map(char *path_map);
+char	check_player_letter(char *str);
 char	*ft_strstr_map(char *s1, char *substr);
 char	*cut_strstr_dup(char *str, int c, int map);
 void	check_path_player(char **map, int row, int col, char value);
@@ -54,8 +55,8 @@ int		ft_atoi(char *str);
 int		ft_strlen(char *str);
 int		ft_occurence(char *str, char c);
 int		ft_strlen_uc(char *str, char c);
-char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strdup(char *str);
+char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strldup(char *str, int size);
 char	*ft_strstr(char *s1, char *substr);
 char	**cp_map(char **map, int height_map);
