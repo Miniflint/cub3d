@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+
+// atoi des plus classic nothing to see around here ngl
 int	ft_atoi(char *str)
 {
 	int num;

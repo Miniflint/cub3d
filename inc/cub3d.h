@@ -42,7 +42,7 @@ char	**get_map(t_all *all);
 char	*read_map(char *path_map);
 char	check_player_letter(char *str);
 char	*ft_strstr_map(char *s1, char *substr);
-char	*cut_strstr_dup(char *str, int c, int map);
+char	*cut_strstr_dup(char *str, int c, int map, int offset);
 void	check_path_player(char **map, int row, int col, char value);
 
 /* FREE */

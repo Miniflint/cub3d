@@ -15,6 +15,9 @@
 
 # include "cub3d.h"
 
+// je sais pas encore quoi mettre la dedans
+// mais je l'ai quand même crée parce qu'on sait jamais
+// quand j'en aurai besoin
 typedef struct S_raycast
 {
 	float	x;
@@ -22,6 +25,7 @@ typedef struct S_raycast
 
 }	t_raycast;
 
+// va contenir les info du joueur
 typedef struct S_player
 {
 	char	letter;
@@ -31,6 +35,7 @@ typedef struct S_player
 	float	y;
 }	t_player;
 
+// va contenir les info du joueur
 typedef struct S_map
 {
 	int		map_height;
@@ -39,6 +44,7 @@ typedef struct S_map
 	char	**map;
 }	t_map;
 
+// va contenir les info du joueur
 typedef struct S_textures
 {
 	char	*no;
@@ -51,6 +57,10 @@ typedef struct S_textures
 	int		c_int[3];
 }	t_textures;
 
+// contient tout le programme
+// peut être récuperé grace à la fonction
+// all = ft_get_all(NULL);
+// voir ft_get_all dans src/utils/ft_get_all.c
 typedef struct S_all
 {
 	char		*path_to_map;

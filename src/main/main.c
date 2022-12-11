@@ -12,11 +12,13 @@
 
 #include "../../inc/cub3d.h"
 
+// juste pour tester les valeure prise dans la récupération du fichier
+// rien de bien intéréssant ici
 void	test(void)
 {
 	t_all	*all;
 	int	i;
-
+	
 	all = ft_get_all(NULL);
 	printf("Textures: \n");
 	printf("\t%s\n\t%s\n\t%s\n\t%s\n", all->txtr.no, all->txtr.so,
@@ -33,6 +35,12 @@ void	test(void)
 		printf("map[%i]: %s\n", i, all->map.map[i]);
 }
 
+// main programme
+// crée une struct all et la met dans une fonction pour pouvoir la reprendre partout
+// assigne le path_to_map
+// initialize le parsing et tout ce qu'il faut
+// lance le main checker pour la map et pour voir si ce'st accessible
+// free quand c'est fini
 int	main(int argc, char **argv)
 {
 	t_all	all;
@@ -41,9 +49,9 @@ int	main(int argc, char **argv)
 		return (1);
 	ft_get_all(&all);
 	all.path_to_map = argv[1];
-	__init__(&all);
-	if (argc > 2)
-		test();
+	if (__init__(&all))
+		return (1);
+	check_view_player(&all);
 	free_all();
 	return (0);
 }

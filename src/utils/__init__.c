@@ -12,12 +12,11 @@
 
 #include "../../inc/cub3d.h"
 
-/*
-	TODO
-	
-	INIT MAP
-*/
-
+// initialise les textures C et F en tant que int plutot que char *
+// avec 50k checks parce que j'ai eu des soucis aussi xDD
+// je hais le C
+// (c'est faux)
+// voir ft_strlen_uc dans src/utils/ft_strlen.c
 static int	__util_txtr_init(t_all *all)
 {
 	int	i;
@@ -38,18 +37,25 @@ static int	__util_txtr_init(t_all *all)
 			return (1);
 		tmp[0] += ft_strlen_uc(tmp[0], ',') + 1;
 		tmp[1] += ft_strlen_uc(tmp[1], ',') + 1;
+		if (!tmp[0] || !tmp[1])
+			return (1);
 	}
 	return (0);
 }
 
+// assigner toutes les bonnes valeurs au bons endroits
+// voir cut_strstr_dup dans src/parsing/cut_strstr_dup.c
 static int	__init_textures(t_all *all)
 {
-	all->txtr.no = cut_strstr_dup(ft_strstr(all->map.file, "NO") + 2, '\n', 0);
-	all->txtr.so = cut_strstr_dup(ft_strstr(all->map.file, "SO") + 2, '\n', 0);
-	all->txtr.we = cut_strstr_dup(ft_strstr(all->map.file, "WE") + 2, '\n', 0);
-	all->txtr.ea = cut_strstr_dup(ft_strstr(all->map.file, "EA") + 2, '\n', 0);
-	all->txtr.f = cut_strstr_dup(ft_strstr(all->map.file, "F") + 1, '\n', 0);
-	all->txtr.c = cut_strstr_dup(ft_strstr(all->map.file, "C") + 1, '\n', 0);
+	char	*map_file;
+
+	map_file = all->map.file;
+	all->txtr.no = cut_strstr_dup(ft_strstr(map_file, "NO"), '\n', 0, 2);
+	all->txtr.so = cut_strstr_dup(ft_strstr(map_file, "SO"), '\n', 0, 2);
+	all->txtr.we = cut_strstr_dup(ft_strstr(map_file, "WE"), '\n', 0, 2);
+	all->txtr.ea = cut_strstr_dup(ft_strstr(map_file, "EA"), '\n', 0, 2);
+	all->txtr.f = cut_strstr_dup(ft_strstr(map_file, "F"), '\n', 0, 1);
+	all->txtr.c = cut_strstr_dup(ft_strstr(map_file, "C"), '\n', 0, 1);
 	if (!all->txtr.no || !all->txtr.so || !all->txtr.we || !all->txtr.ea
 		|| !all->txtr.f || !all->txtr.c)
 		handle_error("Couldn't get textures");
@@ -58,6 +64,7 @@ static int	__init_textures(t_all *all)
 	return (0);
 }
 
+// attribue la lettre au joueur et lui donne sa position
 static int	__init_player(t_all *all)
 {
 	int	pos[2];
@@ -76,6 +83,10 @@ static int	__init_player(t_all *all)
 	return (0);
 }
 
+// check l'extension du fichier
+// lis la map est la stock dans all->map.file
+// essaie de parser la map si il la trouve (ça trouve à 100% quand la map est bien
+// j'ai jamais testé avec des map entièrement conne ngl
 static int	__init_map(t_all *all)
 {
 	if (check_ext(all->path_to_map))
@@ -83,7 +94,7 @@ static int	__init_map(t_all *all)
 	all->map.file = read_map(all->path_to_map);
 	if (!all->map.file)
 		handle_error("Couldn't reading the map");
-	all->map.map_array = cut_strstr_dup(ft_strstr_map(all->map.file, "11"), '\0', 1);
+	all->map.map_array = cut_strstr_dup(ft_strstr_map(all->map.file, "11"), '\0', 1, 0);
 	if (!all->map.map_array)
 		handle_error("No map available");
 	if (contains_fill(all->map.map_array))
@@ -94,15 +105,18 @@ static int	__init_map(t_all *all)
 	return (0);
 }
 
+// lance tout les initialisations
+// voir __init_map
+// voir __init_textures
+// voir __init_player
 int	__init__(t_all *all)
 {
 	everything_null(all);
 	if (__init_map(all))
 		return (1);
-	if(__init_player(all))
-		return (1);
 	if(__init_textures(all))
 		return (1);
-	check_view_player(all);
+	if(__init_player(all))
+		return (1);
 	return (0);
 }

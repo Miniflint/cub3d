@@ -12,6 +12,8 @@
 
 #include "../../inc/cub3d.h"
 
+
+// assez explicit du nom je pense
 void	free_null(char **str)
 {
 	if (*str)
@@ -21,6 +23,8 @@ void	free_null(char **str)
 	}
 }
 
+
+// assez explicit du nom je pense
 void	free_textures(t_all *all)
 {
 	free_null(&all->txtr.no);
@@ -31,6 +35,7 @@ void	free_textures(t_all *all)
 	free_null(&all->txtr.c);
 }
 
+// assez explicit du nom je pense
 void	free_double_tab(char **str)
 {
 	int	i;
@@ -45,6 +50,7 @@ void	free_double_tab(char **str)
 	str = NULL;
 }
 
+// assez explicit du nom je pense
 void	free_map(t_all *all)
 {
 	free_null(&all->map.file);
@@ -52,6 +58,8 @@ void	free_map(t_all *all)
 	free_double_tab(all->map.map);
 }
 
+// récupère la structure all depuis la fonction qui renvoie une statique
+// appèlle ensuite toute les fonction qui on un nom explicite
 void	free_all(void)
 {
 	t_all	*all;

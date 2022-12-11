@@ -12,6 +12,16 @@
 
 #include "../../inc/cub3d.h"
 
+// fuck this
+// i hate it
+// this fonction worked the first time when i wrote it without any compiler error
+// elle me clc cette fonction c'est imcompréhensible mais en gros
+// ça check tout les coté (gauche|droite|haut|bas) pour voir si le char FILL
+// se trouve à coté de:
+// vide
+// espace
+// ou si c'est au bord de la map
+// la fonction est pas compliquée a comprendre de principe mais chiante à écrire
 static int	norminette_i_hate_u(char **m, int i, int j)
 {
 	if (m[i][j] != FILL)
@@ -37,6 +47,7 @@ static int	norminette_i_hate_u(char **m, int i, int j)
 	return (0);
 }
 
+// prend la map modifiée et cherche si le char FILL (voir ci dessus les conditions)
 int	check_map_open(char **modified_map)
 {
 	int	i;

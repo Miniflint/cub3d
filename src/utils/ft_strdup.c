@@ -12,6 +12,7 @@
 
 #include "../../inc/cub3d.h"
 
+// classic ft_strdup
 char	*ft_strdup(char *str)
 {
 	int		i;
@@ -29,6 +30,7 @@ char	*ft_strdup(char *str)
 	return (new_str);
 }
 
+// ft_strdup modifié pour qu'il copie qu'une certaine taille
 char	*ft_strldup(char *str, int size)
 {
 	int		i;

@@ -12,6 +12,24 @@
 
 #include "../../inc/cub3d.h"
 
+/* FICHIER
+ * POUR
+ * METTRE
+ * TOUT
+ * A
+ * NULL
+ *
+ * MAIS
+ *
+ * GENRE
+ *
+ * ABOSLUMENT
+ *
+ * TOUT
+ * (j'ai eu des problèmes au débuts quand je l'avais pas
+ * j'ai pas testé de l'enlever encore j'avoue j'ai pas le courage si ça marche pas)
+*/
+
 static void	txtr_nully(t_textures *txtr)
 {
 	int	i;

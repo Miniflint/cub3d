@@ -12,6 +12,8 @@
 
 #include "../../inc/cub3d.h"
 
+// the classical as usual
+// join 2 chaine de characters
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*new_str;

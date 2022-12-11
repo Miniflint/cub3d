@@ -21,6 +21,9 @@ FILES	= $(MAIN) $(UTILS) $(PARSE) $(FREE)
 OBJS	= $(FILES:.c=.o)
 CFLAGS	= -Wall -Werror -Wextra 
 
+#lancer avec DEBUG=debug pour avoir le mode fsanitize etc
+#ex:
+#	make re DEBUG=debug
 ifeq ($(DEBUG), debug)
 	CFLAGS += -fsanitize=address -g3
 endif

@@ -12,6 +12,8 @@
 
 #include "../../inc/cub3d.h"
 
+// regarde si la chaine de char "substr" est contenue dans la chaine s1
+// et renvoie un pointeur a celle ci si existante
 char	*ft_strstr(char *s1, char *substr)
 {
 	int	i;
@@ -34,6 +36,9 @@ char	*ft_strstr(char *s1, char *substr)
 	return (NULL);
 }
 
+// voir ft_strstr
+// meme principe sauf que c'est modifié pour revenir en arrière
+// si y'a des espace / tab devant 
 char	*ft_strstr_map(char *s1, char *substr)
 {
 	int	i;
@@ -47,8 +52,9 @@ char	*ft_strstr_map(char *s1, char *substr)
 		{
 			if (!substr[j + 1])
 			{
-				while (s1[i - 1] == ' ' || s1[i - 1] == '\t')
-					i--;
+				if (s1[i] && s1[i] == ' ')
+					while (s1[i - 1] == ' ' || s1[i - 1] == '\t')
+						i--;
 				return (&s1[i]);
 			}
 			j++;

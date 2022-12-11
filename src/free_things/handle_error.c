@@ -12,6 +12,9 @@
 
 #include "../../inc/cub3d.h"
 
+
+// fonction pour afficher un message d'erreur
+// ensuite quitter le programme en oubliant pas de free tout
 void	handle_error(char *str)
 {
 	printf("./cub3d Error\n\t%s\n", str);

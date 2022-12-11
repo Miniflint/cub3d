@@ -12,6 +12,8 @@
 
 #include "../../inc/cub3d.h"
 
+
+//fonction faite pour copier un double tableau
 char	**cp_map(char **map, int height_map)
 {
 	int		i;
@@ -27,6 +29,10 @@ char	**cp_map(char **map, int height_map)
 	return (new_map);
 }
 
+// parsage de map depuis le fichier
+// et renvoie un double tableau malloqué
+// voir ft_strlen_uc dans src/utils/ft_strlen.c
+// et ft_strldup dans src/utils/ft_strdup.c
 char	**get_map(t_all *all)
 {
 	char	**map;

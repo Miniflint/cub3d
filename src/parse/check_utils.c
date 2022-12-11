@@ -12,6 +12,17 @@
 
 #include "../../inc/cub3d.h"
 
+// fonction récursive qui va checker depuis la vue du personnage ce qu'il peut théoriquement voir
+// ça appelle juste la fonction en carré à chaque itération
+// exemple (départ case: 3|3
+// ça va faire
+// 3 - 1|3
+// 2 - 1|3
+// 3 + 1|3
+// 4 + 1|3
+// etc etc
+// et ça va check (gauche|droite|haut|bas)
+// pas compliqué non plus mais j'ai du y penser a cette beauté
 void	check_path_player(char **map, int row, int col, char letter)
 {
 	if (row < 0 || col < 0 || !map || !map[row] || !map[row][col])
@@ -27,6 +38,9 @@ void	check_path_player(char **map, int row, int col, char letter)
 	return ;
 }
 
+// check la position d'une lettre sur la map
+// sera utile si y'a des monstres, porte, porte de sortie etc etc etc
+// utilisée pour prendre la pos du joueur
 int	*letter_pos_on_map(char **map, char letter, int i[2])
 {
 	int	x;
@@ -50,6 +64,7 @@ int	*letter_pos_on_map(char **map, char letter, int i[2])
 	return (i);
 }
 
+// nom explicite
 int	check_map_height(char *str)
 {
 	int	i;
@@ -67,6 +82,8 @@ int	check_map_height(char *str)
 	return (height);
 }
 
+// fonction pour checker quel lettre le joueur est
+// sera aussi utile pour orienter le joueur (north|sud|...)
 char	check_player_letter(char *str)
 {
 	char	c;
@@ -83,6 +100,8 @@ char	check_player_letter(char *str)
 	return (c);
 }
 
+// useless, delete later when no need anymore
+// je l'utilise encore des fois donc faut pas la suppr mtn
 void print_double_tab(char **array_double)
 {
 	int	i;

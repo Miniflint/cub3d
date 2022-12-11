@@ -12,6 +12,11 @@
 
 #include "../../inc/cub3d.h"
 
+// lire le fichier 1 par 1
+// flemme d'utiliser get next line alors que j'ai ça qui marche bien
+// (quand j'écris le commentaire je me dis que gnl aurai été utile pour parser
+// les couleurs etc
+// mais que ça aurai été chiant pour la map donc avis mitigé avec moi même)
 static char	*quick_read_map(int fd)
 {
 	char	*str;
@@ -37,6 +42,8 @@ static char	*quick_read_map(int fd)
 	return (str);
 }
 
+// check si le fichier existe
+// crée le FD et renvoie directement la chaine malloquée
 char	*read_map(char *path_map)
 {
 	int		fd;

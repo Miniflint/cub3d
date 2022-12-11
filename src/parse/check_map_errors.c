@@ -12,6 +12,15 @@
 
 #include "../../inc/cub3d.h"
 
+
+// crée une copie de la map en allouant tout un nouveau double tableau
+// modifie ce nouveau tableau à l'aide de la fonction check_path_player()
+// print le tableau (on s'en fout de celui la)
+// si la fonction check_map_open r'envoie quelque chose, ça veut dire que
+// le joueur a théoriquement accès à en dehors de la map
+// (mauvais signe)
+// ducoup on free le double tableau pour éviter les leaks et on exit le programme
+// sinon on return que la fonction c'est bien passée 
 int	check_view_player(t_all *all)
 {
 	char	**new_map;
@@ -31,6 +40,11 @@ int	check_view_player(t_all *all)
 	return (0);
 }
 
+
+// fonction pour checker si il y a plus de 1 joueur
+// i = -1
+// donc si il y a un joueur ça envoie à 0
+// si la fonction r'envoie quelque chose autre que 0, il y a plus que 1 joueur sur la map
 int	check_nb_player(char *str)
 {
 	int	i;
@@ -43,6 +57,8 @@ int	check_nb_player(char *str)
 	return (i);
 }
 
+// check if the map already contains the FILL '-' character
+// if yes return 1
 int	contains_fill(char *str)
 {
 	int	i;
@@ -54,6 +70,9 @@ int	contains_fill(char *str)
 	return (0);
 }
 
+// checker l'extension du nom de fichier pris
+// maps/blabla.cub (très important, c'est noté dans le sujet qu'il
+// faut pas prendre autre chose que .cub
 int	check_ext(char *path)
 {
 	const int	len_path
