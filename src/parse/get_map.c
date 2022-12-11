@@ -1,5 +1,22 @@
 #include "../../inc/cub3d.h"
 
+/*
+int	check_player_pos(char *str)
+{
+	t_all	*all;
+	int	i;
+
+	all = ft_get_all(NULL);
+	i = -1;
+	while (str[++i])
+	{
+		if (str[i] == all->player.letter)
+		{
+
+		}
+	}
+}
+*/
 char	**get_map(t_all *all)
 {
 	char	**map;

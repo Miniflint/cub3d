@@ -24,6 +24,9 @@ typedef struct S_raycast
 
 typedef struct S_player
 {
+	char	letter;
+	int	start_x;
+	int	start_y;
 	float	x;
 	float	y;
 }	t_player;

@@ -27,6 +27,9 @@ static void	map_nully(t_all *all)
 
 static void	player_nully(t_all *all)
 {
+	all->player.letter = '\0';
+	all->player.start_x = 0;
+	all->player.start_y = 0;
 	all->player.x = 0;
 	all->player.y = 0;
 }

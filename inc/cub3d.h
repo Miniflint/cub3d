@@ -28,10 +28,14 @@ int		__init__(t_all *all);
 // PARSE
 int		check_ext(char *path);
 int		check_walls(char **map);
+int		check_nb_player(char *str);
+int		check_map_height(char *str);
+char	check_player_letter(char *str);
 char	**get_map(t_all *all);
 char	*read_map(char *path_map);
 char	*ft_strstr_map(char *s1, char *substr);
 char	*cut_strstr_dup(char *str, int c, int map);
+void	check_path_player(char **map, int row, int col, char value);
 
 // FREE
 void	free_all(void);
@@ -43,7 +47,6 @@ void	everything_null(t_all *all);
 // UTILS
 int		ft_atoi(char *str);
 int		ft_strlen(char *str);
-int		check_map_height(char *str);
 int		ft_occurence(char *str, char c);
 int		ft_strlen_uc(char *str, char c);
 char	*ft_strjoin(char *s1, char *s2);
