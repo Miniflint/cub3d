@@ -67,10 +67,20 @@ static int	__init_map(t_all *all)
 		handle_error("Couldn't reading the map");
 	all->map.map_array = cut_strstr_dup(ft_strstr_map(all->map.file, "11"), '\0', 1);
 	if (!all->map.map_array)
-		handle_error ("No map available");
+		handle_error("No map available");
 	all->map.map = get_map(all);
 	if (!all->map.map)
 		handle_error("Error init double array");
+	return (0);
+}
+
+static int	__init_player(t_all *all)
+{
+	if (check_nb_player(all->map.map_array))
+		handle_error("Too much / not enough player on the map");
+	all->player.letter = check_player_letter(all->map.map_array);
+	if (!all->player.letter)
+		handle_error("Couldn't find the player on the map");
 	return (0);
 }
 
@@ -78,6 +88,8 @@ int	__init__(t_all *all)
 {
 	everything_null(all);
 	if (__init_map(all))
+		return (1);
+	if(__init_player(all))
 		return (1);
 	if(__init_textures(all))
 		return (1);
