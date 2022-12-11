@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:02:57 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/11 15:45:39 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/11 17:00:16 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <fcntl.h>
 # include "cub3dstruct.h"
 
-#define FILL '-'
+# define FILL '-'
 
 // GET ALL
 t_all	*ft_get_all(t_all *all);
