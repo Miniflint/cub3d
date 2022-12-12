@@ -83,6 +83,19 @@ enum {
 	ON_DESTROY = 17
 };
 
+enum {
+	K_Q = 12,
+	K_ESC = 53,
+	K_A = 0,
+	K_LEFT = 123,
+	K_S = 1,
+	K_RIGHT = 124,
+	K_D = 2,
+	K_DOWN = 125,
+	K_W = 13,
+	K_UP = 126,
+};
+
 // contient tout le programme
 // peut être récuperé grace à la fonction
 // all = ft_get_all(NULL);

@@ -12,12 +12,12 @@
 
 #include "../../inc/cub3d.h"
 
-int	get_data(int keycode, __unused t_all *all)
+int	close_window(int keycode, __unused t_all *all)
 {
-	printf("%d\n", keycode);
-	//mlx_destroy_window(all->mlx.mlx, all->mlx.window);
-	//handle_error ("Window closed");
-	return (0);
+	(void)keycode;
+	printf("Closing the window !\n");
+	free_all();
+	exit (0);
 }
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
@@ -33,6 +33,28 @@ int	create_trgb(int t, int r, int g, int b)
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
+int	keyDowned(int keycode, t_all *all)
+{
+	if (keycode == K_Q || keycode == K_ESC)
+		close_window(keycode, all);
+	printf("KeyDowned: %i\n", keycode);
+	return (0);
+}
+
+int	keyUpped(int keycode, t_all *all)
+{
+	(void)all;
+	printf("KeyUowned: %i\n", keycode);
+	return (0);
+}
+
+static void	loop_hooks(t_all *all)
+{
+	// to destroy window
+	mlx_hook(all->mlx.window, ON_KEYDOWN, 0, keyDowned, all);
+	mlx_hook(all->mlx.window, ON_KEYUP, 0, keyUpped, all);
+	mlx_hook(all->mlx.window, ON_DESTROY, 0, close_window, all);
+}
 
 int	win_mlx_loop(t_all *all)
 {
@@ -42,14 +64,15 @@ int	win_mlx_loop(t_all *all)
 
 	img.img = mlx_new_image(all->mlx.mlx, all->txtr.r_int[0], all->txtr.r_int[1]);
     img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	y = 20;
-	while (y++ < 550)
+	y = 0;
+	while (y++ < all->txtr.r_int[1] - 2)
 	{
-		x = 100 + (y / 2);
-		while (x++ < 900 - (y / 2))
+		x = 0;
+		while (x++ < all->txtr.r_int[0])
 			my_mlx_pixel_put(&img, x, y, create_trgb(0, all->txtr.c_int[0],all->txtr.c_int[1],all->txtr.c_int[2]));
 	}
 	mlx_put_image_to_window(all->mlx.mlx, all->mlx.window, img.img, 0, 0);
+	loop_hooks(all);
 	mlx_loop(all->mlx.mlx);
 	return (0);
 }
