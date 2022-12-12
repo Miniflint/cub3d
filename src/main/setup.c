@@ -42,11 +42,11 @@ int	win_mlx_loop(t_all *all)
 
 	img.img = mlx_new_image(all->mlx.mlx, all->txtr.r_int[0], all->txtr.r_int[1]);
     img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	x = 10;
-	while (x++ < 500)
+	y = 20;
+	while (y++ < 550)
 	{
-		y = 20;
-		while (y++ < 500)
+		x = 100 + (y / 2);
+		while (x++ < 900 - (y / 2))
 			my_mlx_pixel_put(&img, x, y, create_trgb(0, all->txtr.c_int[0],all->txtr.c_int[1],all->txtr.c_int[2]));
 	}
 	mlx_put_image_to_window(all->mlx.mlx, all->mlx.window, img.img, 0, 0);
