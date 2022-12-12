@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:28:30 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/12 13:16:06 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/12 14:26:02 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,20 @@ static int	__util_txtr_init(t_all *all)
 	{
 		all->txtr.c_int[i] = ft_atoi(tmp[0]);
 		all->txtr.f_int[i] = ft_atoi(tmp[1]);
-		if (i < 3)
-			all->txtr.r_int[i] = ft_atoi(tmp[2]);
 		if (all->txtr.c_int[i] < 0 || all->txtr.f_int[i] < 0
 			|| all->txtr.c_int[i] > 255 || all->txtr.f_int[i] > 255)
 			return (1);
 		tmp[0] += ft_strlen_uc(tmp[0], ',') + 1;
 		tmp[1] += ft_strlen_uc(tmp[1], ',') + 1;
-		if (i < 3)
-			tmp[2] += ft_strlen_uc(tmp[2], ' ') + 1;
-		if (!tmp[0] || !tmp[1] || (i < 3 && !tmp[2]))
+		if (!tmp[0] || !tmp[1])
+			return (1);
+	}
+	i = -1;
+	while (++i < 2)
+	{
+		all->txtr.r_int[i] = ft_atoi(tmp[2]);
+		tmp[2] += ft_strlen_uc(tmp[2], ' ') + 1;
+		if (!tmp[2])
 			return (1);
 	}
 	return (0);
