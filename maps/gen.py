@@ -1,8 +1,8 @@
 import numpy
 import sys
 
-sizeX = 70
-sizeY = 80
+sizeX = 420
+sizeY = 420
 
 def correct(array):
     for x, y in enumerate(array):
@@ -16,7 +16,7 @@ def correct(array):
                 sys.stdout.write("\n")
 
 def main():
-    array = numpy.random.randint(4, size=(sizeY, sizeX))
+    array = numpy.random.randint(3, size=(sizeY, sizeX))
     correct(array)
 
 main()

@@ -17,6 +17,7 @@
 // (quand j'écris le commentaire je me dis que gnl aurai été utile pour parser
 // les couleurs etc
 // mais que ça aurai été chiant pour la map donc avis mitigé avec moi même)
+// ft_strjoin in src/utils/ft_strjoin.c
 static char	*quick_read_map(int fd)
 {
 	char	*str;

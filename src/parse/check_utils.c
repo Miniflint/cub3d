@@ -84,6 +84,7 @@ int	check_map_height(char *str)
 
 // fonction pour checker quel lettre le joueur est
 // sera aussi utile pour orienter le joueur (north|sud|...)
+// ft_occurence in src/utils/ft_strlen.c
 char	check_player_letter(char *str)
 {
 	char	c;

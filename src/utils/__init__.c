@@ -16,7 +16,9 @@
 // avec 50k checks parce que j'ai eu des soucis aussi xDD
 // je hais le C
 // (c'est faux)
-// voir ft_strlen_uc dans src/utils/ft_strlen.c
+// ft_strlen_uc in src/utils/ft_strlen.c
+// ft_occurence in src/utils/ft_strlen.c
+// ft_atoi in src/utils/ft_atoi.c
 static int	__util_txtr_init(t_all *all)
 {
 	int	i;
@@ -44,7 +46,8 @@ static int	__util_txtr_init(t_all *all)
 }
 
 // assigner toutes les bonnes valeurs au bons endroits
-// voir cut_strstr_dup dans src/parsing/cut_strstr_dup.c
+// cut_strstr_dup in src/parse/cut_strstr.c
+// ft_strstr in src/utils/ft_strstr.c
 static int	__init_textures(t_all *all)
 {
 	char	*map_file;
@@ -65,6 +68,9 @@ static int	__init_textures(t_all *all)
 }
 
 // attribue la lettre au joueur et lui donne sa position
+// check_nb_player in src/parse/check_map_error.c
+// check_player_letter in src/parse/check_utils.c
+// letter_pos_on_map in src/parse/check_utils.c
 static int	__init_player(t_all *all)
 {
 	int	pos[2];
@@ -79,7 +85,6 @@ static int	__init_player(t_all *all)
 		handle_error("Couldn't find the player on the map");
 	all->player.start_y = pos[0];
 	all->player.start_x = pos[1];
-	letter_pos_on_map(all->map.map, 'E', pos);
 	return (0);
 }
 
@@ -87,6 +92,9 @@ static int	__init_player(t_all *all)
 // lis la map est la stock dans all->map.file
 // essaie de parser la map si il la trouve (ça trouve à 100% quand la map est bien
 // j'ai jamais testé avec des map entièrement conne ngl
+// ft_strstr_map in src/utils/ft_strstr.c
+// contains_fill in src/parse/check_map_errors.c
+// get_map in src/parse/get_map.c
 static int	__init_map(t_all *all)
 {
 	if (check_ext(all->path_to_map))

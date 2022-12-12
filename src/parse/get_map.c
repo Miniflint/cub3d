@@ -14,6 +14,7 @@
 
 
 //fonction faite pour copier un double tableau
+// ft_strdup in src//utils/ft_strdup.c
 char	**cp_map(char **map, int height_map)
 {
 	int		i;
