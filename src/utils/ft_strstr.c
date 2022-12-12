@@ -52,9 +52,10 @@ char	*ft_strstr_map(char *s1, char *substr)
 		{
 			if (!substr[j + 1])
 			{
-				if (s1[i] && s1[i] == ' ')
-					while (s1[i - 1] == ' ' || s1[i - 1] == '\t')
-						i--;
+				while (s1[i - 1] != '\n')
+					i--;
+				if (s1[i] == '\n')
+					i++;
 				return (&s1[i]);
 			}
 			j++;

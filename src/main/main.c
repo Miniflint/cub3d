@@ -51,6 +51,7 @@ int	main(int argc, char **argv)
 	all.path_to_map = argv[1];
 	if (__init__(&all))
 		return (1);
+///	test();
 	check_view_player(&all);
 	free_all();
 	return (0);
