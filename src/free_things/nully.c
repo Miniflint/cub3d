@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:50:11 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/11 18:15:10 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/12 12:59:43 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static void	txtr_nully(t_textures *txtr)
 
 	txtr->f = NULL;
 	txtr->c = NULL;
+	txtr->r = NULL;
 	txtr->no = NULL;
 	txtr->so = NULL;
 	txtr->we = NULL;
@@ -45,6 +46,8 @@ static void	txtr_nully(t_textures *txtr)
 	{
 		txtr->f_int[i] = -1;
 		txtr->c_int[i] = -1;
+		if (i < 3)
+			txtr->r_int[i] = -1;
 	}
 }
 

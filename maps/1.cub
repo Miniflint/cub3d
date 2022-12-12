@@ -6,6 +6,8 @@ SO ./texture/south
 
 C 225,30,0
 
+R 1920 1080
+
 WE ./texture/west
 EA ./texture/east
 

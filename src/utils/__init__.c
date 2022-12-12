@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:28:30 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/11 19:05:56 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/12 13:13:55 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,26 @@
 static int	__util_txtr_init(t_all *all)
 {
 	int	i;
-	char	*tmp[2];
+	char	*tmp[3];
 
 	i = -1;
 	tmp[0] = all->txtr.c;
 	tmp[1] = all->txtr.f;
-	if (ft_occurence(all->txtr.f, ',') != 2 || ft_occurence(all->txtr.c, ',') != 2)
-		return (1);
+	tmp[2] = all->txtr.r;
 	while (++i < 3)
 	{
 		all->txtr.c_int[i] = ft_atoi(tmp[0]);
 		all->txtr.f_int[i] = ft_atoi(tmp[1]);
-		if (all->txtr.c_int[i] < 0 || all->txtr.f_int[i] < 0)
-			return (1);
-		if (all->txtr.c_int[i] > 255 || all->txtr.f_int[i] > 255)
+		if (i < 3)
+			all->txtr.r_int[i] = ft_atoi(tmp[2]);
+		if (all->txtr.c_int[i] < 0 || all->txtr.f_int[i] < 0
+			|| all->txtr.c_int[i] > 255 || all->txtr.f_int[i] > 255)
 			return (1);
 		tmp[0] += ft_strlen_uc(tmp[0], ',') + 1;
 		tmp[1] += ft_strlen_uc(tmp[1], ',') + 1;
-		if (!tmp[0] || !tmp[1])
+		if (i < 3)
+			tmp[2] += ft_strlen_uc(tmp[2], ' ') + 1;
+		if (!tmp[0] || !tmp[1] || (i < 3 && !tmp[2]))
 			return (1);
 	}
 	return (0);
@@ -59,11 +61,15 @@ static int	__init_textures(t_all *all)
 	all->txtr.ea = cut_strstr_dup(ft_strstr(map_file, "EA"), '\n', 0, 2);
 	all->txtr.f = cut_strstr_dup(ft_strstr(map_file, "F"), '\n', 0, 1);
 	all->txtr.c = cut_strstr_dup(ft_strstr(map_file, "C"), '\n', 0, 1);
+	all->txtr.r = cut_strstr_dup(ft_strstr(map_file, "R"), '\n', 0, 1);
 	if (!all->txtr.no || !all->txtr.so || !all->txtr.we || !all->txtr.ea
-		|| !all->txtr.f || !all->txtr.c)
+		|| !all->txtr.f || !all->txtr.c || !all->txtr.r)
 		handle_error("Couldn't get textures");
+	if (ft_occurence(all->txtr.c, ',') != 2
+		|| ft_occurence(all->txtr.f, ',') != 2)
+		handle_error("Problem parsing colors");
 	if (__util_txtr_init(all))
-		handle_error("Problem getting colors");
+		handle_error("Problem parsing colors");
 	return (0);
 }
 

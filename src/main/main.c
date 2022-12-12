@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:27:07 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/09 13:46:30 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/12 13:04:46 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,18 @@ void	test(void)
 	printf("Textures: \n");
 	printf("\t%s\n\t%s\n\t%s\n\t%s\n", all->txtr.no, all->txtr.so,
 			all->txtr.we, all->txtr.ea);
-	printf("\n(Char) F and C\n");
-	printf("\t%s\n\t%s\n", all->txtr.f, all->txtr.c);
+	printf("\n(Char) F, C and R\n");
+	printf("\t%s\n\t%s\n\t%s\n", all->txtr.f, all->txtr.c, all->txtr.r);
 	i = -1;
-	printf("\n(Int) F and C\n");
-	printf("\t%i,%i,%i\n", all->txtr.f_int[0], all->txtr.f_int[1],
+	printf("\n(Int) F, C and R\n");
+	printf("\t%i, %i, %i\n", all->txtr.f_int[0], all->txtr.f_int[1],
 			all->txtr.f_int[2]);
-	printf("\t%i,%i,%i\n\n", all->txtr.c_int[0], all->txtr.c_int[1],
+	printf("\t%i, %i, %i\n\n", all->txtr.c_int[0], all->txtr.c_int[1],
 			all->txtr.c_int[2]);
-	while (all->map.map[++i])
-		printf("map[%i]: %s\n", i, all->map.map[i]);
+	printf("\t%i, %i\n\n", all->txtr.r_int[0], all->txtr.r_int[1]);
+	if (all->map.map && all->map.map[i])
+		while (all->map.map[++i])
+			printf("%3s\n", all->map.map[i]);
 }
 
 // main programme
@@ -53,8 +55,8 @@ int	main(int argc, char **argv)
 	all.path_to_map = argv[1];
 	if (__init__(&all))
 		return (1);
-///	test();
 	check_view_player(&all);
+	test();
 	free_all();
 	return (0);
 }

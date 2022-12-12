@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:11:13 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/11 17:11:12 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/12 12:59:41 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,10 @@ typedef struct S_textures
 	char	*ea;
 	char	*f;
 	char	*c;
+	char	*r;
 	int		f_int[3];
 	int		c_int[3];
+	int		r_int[2];
 }	t_textures;
 
 // contient tout le programme
