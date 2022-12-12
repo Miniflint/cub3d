@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:11:13 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/12 12:59:41 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/12 13:16:23 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 // quand j'en aurai besoin
 typedef struct S_raycast
 {
-	float	x;
-	float	y;
+	double	x;
+	double	y;
 
 }	t_raycast;
 
@@ -31,8 +31,8 @@ typedef struct S_player
 	char	letter;
 	int		start_x;
 	int		start_y;
-	float	x;
-	float	y;
+	double	x;
+	double	y;
 }	t_player;
 
 // va contenir les info du joueur

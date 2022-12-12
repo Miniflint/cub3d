@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:27:07 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/12 13:04:46 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/12 13:34:48 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	main(int argc, char **argv)
 	if (__init__(&all))
 		return (1);
 	check_view_player(&all);
-	test();
+	//test();
 	free_all();
 	return (0);
 }

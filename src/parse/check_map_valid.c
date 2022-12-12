@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:58:16 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/11 19:01:14 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/12 13:36:33 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@
 // la fonction est pas compliquée a comprendre de principe mais chiante à écrire
 static int	norminette_i_hate_u(char **m, int i, int j)
 {
-	if (m[i][j] != FILL)
-		return (0);
 	if (i <= 0 || j <= 0)
 		return (1);
 	if (!m[i - 1] || !m[i - 1][j])

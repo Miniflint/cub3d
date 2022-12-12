@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 11:32:01 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/12 12:51:43 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/12 13:17:49 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	free_textures(t_all *all)
 	free_null(&all->txtr.ea);
 	free_null(&all->txtr.f);
 	free_null(&all->txtr.c);
+	free_null(&all->txtr.r);
 	i = -1;
 	while (++i < 3)
 	{
