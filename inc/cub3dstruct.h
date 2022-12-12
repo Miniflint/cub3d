@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:11:13 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/12 13:16:23 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/12 15:51:22 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ typedef struct S_raycast
 {
 	double	x;
 	double	y;
-
 }	t_raycast;
 
 // va contenir les info du joueur
@@ -59,6 +58,31 @@ typedef struct S_textures
 	int		r_int[2];
 }	t_textures;
 
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_data;
+
+typedef struct S_mlx
+{
+	void	*mlx;
+	void	*window;
+	void	*image;
+}	t_mlx;
+
+enum {
+	ON_KEYDOWN = 2,
+	ON_KEYUP = 3,
+	ON_MOUSEDOWN = 4,
+	ON_MOUSEUP = 5,
+	ON_MOUSEMOVE = 6,
+	ON_EXPOSE = 12,
+	ON_DESTROY = 17
+};
+
 // contient tout le programme
 // peut être récuperé grace à la fonction
 // all = ft_get_all(NULL);
@@ -69,6 +93,7 @@ typedef struct S_all
 	t_map		map;
 	t_textures	txtr;
 	t_player	player;
+	t_mlx		mlx;
 	t_raycast	*raycast;
 }	t_all;
 

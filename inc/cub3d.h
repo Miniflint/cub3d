@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:02:57 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/11 19:05:02 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/12 15:56:45 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include "../minilib/mlx.h"
 # include "cub3dstruct.h"
 
 # define FILL '-'
@@ -28,6 +29,7 @@ void print_double_tab(char **array_double);
 
 /* INIT */
 int		__init__(t_all *all);
+int	__init_textures(t_all *all);
 
 /* PARSING */
 int		check_ext(char *path);
@@ -63,5 +65,8 @@ char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strldup(char *str, int size);
 char	*ft_strstr(char *s1, char *substr);
 char	**cp_map(char **map, int height_map);
+
+/* MLX */
+int		win_mlx_loop(t_all *all);
 
 #endif
