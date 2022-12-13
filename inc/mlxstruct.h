@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:11:13 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/13 14:00:07 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/13 17:09:39 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct S_mlx
 {
 	void	*mlx;
 	void	*window;
-	void	*image;
+	t_data	*image;
 }	t_mlx;
 
 enum {

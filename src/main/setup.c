@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:55:19 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/13 15:40:44 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/13 17:10:20 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	close_window(void)
 	free_all();
 	if (!mlx_clear_window(all->mlx.mlx, all->mlx.window))
 		return (1);
+	mlx_destroy_image(all->mlx.mlx, all->mlx.image->img);
 	mlx_destroy_window(all->mlx.mlx, all->mlx.window);
 	printf("Closing the window !\n");
 	exit (0);
@@ -52,6 +53,7 @@ int	win_mlx_loop(t_all *all)
 	int		x;
 	int		y;
 
+	all->mlx.image = &img;
 	img.img = mlx_new_image(all->mlx.mlx, all->txtr.r_int[0], all->txtr.r_int[1]);
     img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	y = 0;

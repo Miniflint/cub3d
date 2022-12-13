@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 13:55:46 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/13 17:01:11 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/13 17:15:41 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,21 @@
 void	move_with_key(t_all *all)
 {
 	if (all->player.moves.key_w)
-		all->player.x += (double)0.03;
-	if (all->player.moves.key_a)
 		all->player.y += (double)0.03;
-	if (all->player.moves.key_s)
+	if (all->player.moves.key_a)
 		all->player.x -= (double)0.03;
-	if (all->player.moves.key_d)
+	if (all->player.moves.key_s)
 		all->player.y -= (double)0.03;
+	if (all->player.moves.key_d)
+		all->player.x += (double)0.03;
 	if (all->player.moves.arr_left)
-		all->player.angle += (double)0.02;
+		all->player.angle += (int)0.03;
 	if (all->player.moves.arr_right)
 		all->player.angle -= (double)0.02;
-	printf("x: %f - y: %f\tangle: %f\n", all->player.x, all->player.y, all->player.angle);
+	printf("y: %f - x: %f\tangle: %f\n", all->player.y, all->player.x, all->player.angle);
 	if (!all->map.map[(int)all->player.y][(int)all->player.x]
 		|| all->map.map[(int)all->player.y][(int)all->player.x] == '1')
-		printf("Out of the world\n");
+		printf("U should be here btw\n");
 }
 
 void	translate_key(int keycode, t_all *all, int value)

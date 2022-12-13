@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:28:30 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/13 15:33:14 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/13 17:04:22 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ static int	__init_player(t_all *all)
 	all->player.angle = get_angle(all->player.letter);
 	if (all->player.angle == -1)
 		return (1);
-	printf("%f\n", all->player.angle);
 	return (0);
 }
 
