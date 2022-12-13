@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 18:28:36 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/11 19:07:27 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/13 15:57:00 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	check_path_player(char **map, int row, int col, char letter)
 		return ;
 	if (map[row][col] == FILL || map[row][col] == '1' || map[row][col] == ' ')
 		return ;
-	if (map[row][col] != letter)
+	if (map[row][col] != letter && map[row][col] != 'E')
 			map[row][col] = FILL;
 	check_path_player(map, row - 1, col, letter);
 	check_path_player(map, row + 1, col, letter);

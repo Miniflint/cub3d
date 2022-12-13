@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:55:19 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/12 17:04:39 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/13 15:40:44 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,6 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 int	create_trgb(int t, int r, int g, int b)
 {
 	return (t << 24 | r << 16 | g << 8 | b);
-}
-
-int	keyDowned(int keycode, t_all *all)
-{
-	if (keycode == K_Q || keycode == K_ESC)
-		close_window();
-	(void)all;
-	printf("Key: Down: %i\n", keycode);
-	return (0);
-}
-
-int	keyUpped(int keycode, t_all *all)
-{
-	(void)all;
-	printf("Key: UP %i\n", keycode);
-	return (0);
 }
 
 static void	loop_hooks(t_all *all)

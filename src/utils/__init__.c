@@ -6,11 +6,24 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:28:30 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/12 15:49:15 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/13 15:33:14 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
+
+static double	get_angle(char c)
+{
+	if (c == 'N')
+		return (0);
+	if (c == 'W')
+		return (90);
+	if (c == 'S')
+		return (180);
+	if (c == 'E')
+		return (270);
+	return (-1);
+}
 
 // attribue la lettre au joueur et lui donne sa position
 // check_nb_player in src/parse/check_map_error.c
@@ -30,6 +43,12 @@ static int	__init_player(t_all *all)
 		handle_error("Couldn't find the player on the map");
 	all->player.start_y = pos[0];
 	all->player.start_x = pos[1];
+	all->player.x = all->player.start_x;
+	all->player.y = all->player.start_y;
+	all->player.angle = get_angle(all->player.letter);
+	if (all->player.angle == -1)
+		return (1);
+	printf("%f\n", all->player.angle);
 	return (0);
 }
 

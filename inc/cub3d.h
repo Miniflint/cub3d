@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:02:57 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/12 15:56:45 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/13 15:37:41 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include "../minilib/mlx.h"
-# include "cub3dstruct.h"
 # include "mlxstruct.h"
+# include "cub3dstruct.h"
 
 # define FILL '-'
 
@@ -69,5 +69,12 @@ char	**cp_map(char **map, int height_map);
 
 /* MLX */
 int		win_mlx_loop(t_all *all);
+int		close_window(void);
+
+/* MOVES */
+void	move_with_key(t_all *all);
+int		keyUpped(int keycode, t_all *all);
+int		keyDowned(int keycode, t_all *all);
+void	translate_key(int keycode, t_all *all, int value);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 10:11:07 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/12 13:32:26 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/13 15:52:08 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ char	*ft_strstr_map(char *s1, char *substr)
 	int	j;
 
 	i = 0;
+	if (!s1[i])
+		return (NULL);
 	while (s1[i])
 	{
 		j = 0;
@@ -53,7 +55,7 @@ char	*ft_strstr_map(char *s1, char *substr)
 			if (!substr[j + 1])
 			{
 				while (s1[i - 1] != '\n' || s1[i - 2] == '0'
-				|| s1[i - 2] == '0' || s1[i - 2] == '1')
+				|| s1[i - 2] == '\t' || s1[i - 2] == '1')
 					i--;
 				if (s1[i] == '\n')
 					i++;
@@ -63,7 +65,5 @@ char	*ft_strstr_map(char *s1, char *substr)
 		}
 		i++;
 	}
-	if (!s1[i])
-		return (NULL);
 	return (NULL);
 }

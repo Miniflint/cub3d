@@ -6,9 +6,12 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:11:13 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/12 15:51:22 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/13 14:00:07 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef MLXSTRUCT_H
+# define MLXSTRUCT_H
 
 #include "cub3d.h"
 
@@ -38,14 +41,16 @@ enum {
 };
 
 enum {
-	K_Q = 12,
 	K_ESC = 53,
+	K_Q = 12,
 	K_A = 0,
-	K_LEFT = 123,
 	K_S = 1,
-	K_RIGHT = 124,
 	K_D = 2,
-	K_DOWN = 125,
 	K_W = 13,
-	K_UP = 126,
+	ARR_LEFT = 123,
+	ARR_RIGHT = 124,
+	ARR_DOWN = 125,
+	ARR_UP = 126,
 };
+
+#endif

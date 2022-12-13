@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:11:13 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/12 15:51:22 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/13 15:30:03 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,8 @@ typedef struct S_movement
 	int	key_a;
 	int	key_s;
 	int	key_d;
-	int	arr_up;
 	int	arr_left;
-	int	arr_down;
-	int	arr_righ;
+	int	arr_right;
 }	t_movement;
 
 // va contenir les info du joueur
@@ -44,6 +42,7 @@ typedef struct S_player
 	int			start_y;
 	double		x;
 	double		y;
+	double		angle;
 	t_movement	moves;
 }	t_player;
 

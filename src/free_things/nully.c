@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:50:11 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/12 12:59:43 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/13 15:31:04 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,8 @@ static void	set_movement(t_movement *moves)
 	moves->key_a = 0;
 	moves->key_s = 0;
 	moves->key_d = 0;
-	moves->arr_up = 0;
 	moves->arr_left = 0;
-	moves->arr_down = 0;
-	moves->arr_righ = 0;
+	moves->arr_right = 0;
 }
 
 static void	player_nully(t_player *player)
@@ -78,6 +76,7 @@ static void	player_nully(t_player *player)
 	player->start_y = -1;
 	player->x = -1;
 	player->y = -1;
+	player->angle = -1;
 	set_movement(&(player->moves));
 }
 
