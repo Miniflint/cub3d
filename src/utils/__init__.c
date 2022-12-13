@@ -63,7 +63,7 @@ static int	__init_mlx(t_all *all)
 	all->mlx.mlx = mlx_init();
 	if (!all->mlx.mlx)
 		return (1);
-	all->mlx.window = mlx_new_window(all->mlx.mlx, all->txtr.r_int[0], all->txtr.r_int[1], "COUCOU");
+	all->mlx.window = mlx_new_window(all->mlx.mlx, all->txtr.r_int[0], all->txtr.r_int[1] + 2, "COUCOU");
 	if (!all->mlx.window)
 		return (1);
 	return (0);

@@ -46,7 +46,7 @@ static void	txtr_nully(t_textures *txtr)
 	{
 		txtr->f_int[i] = -1;
 		txtr->c_int[i] = -1;
-		if (i < 3)
+		if (i < 2)
 			txtr->r_int[i] = -1;
 	}
 }
@@ -59,6 +59,18 @@ static void	map_nully(t_map *map)
 	map->map_height = 0;
 }
 
+static void	set_movement(t_movement *moves)
+{
+	moves->key_w = 0;
+	moves->key_a = 0;
+	moves->key_s = 0;
+	moves->key_d = 0;
+	moves->arr_up = 0;
+	moves->arr_left = 0;
+	moves->arr_down = 0;
+	moves->arr_righ = 0;
+}
+
 static void	player_nully(t_player *player)
 {
 	player->letter = '\0';
@@ -66,6 +78,7 @@ static void	player_nully(t_player *player)
 	player->start_y = -1;
 	player->x = -1;
 	player->y = -1;
+	set_movement(&(player->moves));
 }
 
 void	everything_null(t_all *all)

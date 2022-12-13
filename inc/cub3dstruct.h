@@ -24,14 +24,27 @@ typedef struct S_raycast
 	double	y;
 }	t_raycast;
 
+typedef struct S_movement
+{
+	int	key_w;
+	int	key_a;
+	int	key_s;
+	int	key_d;
+	int	arr_up;
+	int	arr_left;
+	int	arr_down;
+	int	arr_righ;
+}	t_movement;
+
 // va contenir les info du joueur
 typedef struct S_player
 {
-	char	letter;
-	int		start_x;
-	int		start_y;
-	double	x;
-	double	y;
+	char		letter;
+	int			start_x;
+	int			start_y;
+	double		x;
+	double		y;
+	t_movement	moves;
 }	t_player;
 
 // va contenir les info du joueur
@@ -57,44 +70,6 @@ typedef struct S_textures
 	int		c_int[3];
 	int		r_int[2];
 }	t_textures;
-
-typedef struct	s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}	t_data;
-
-typedef struct S_mlx
-{
-	void	*mlx;
-	void	*window;
-	void	*image;
-}	t_mlx;
-
-enum {
-	ON_KEYDOWN = 2,
-	ON_KEYUP = 3,
-	ON_MOUSEDOWN = 4,
-	ON_MOUSEUP = 5,
-	ON_MOUSEMOVE = 6,
-	ON_EXPOSE = 12,
-	ON_DESTROY = 17
-};
-
-enum {
-	K_Q = 12,
-	K_ESC = 53,
-	K_A = 0,
-	K_LEFT = 123,
-	K_S = 1,
-	K_RIGHT = 124,
-	K_D = 2,
-	K_DOWN = 125,
-	K_W = 13,
-	K_UP = 126,
-};
 
 // contient tout le programme
 // peut être récuperé grace à la fonction

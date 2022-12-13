@@ -19,6 +19,7 @@
 # include <fcntl.h>
 # include "../minilib/mlx.h"
 # include "cub3dstruct.h"
+# include "mlxstruct.h"
 
 # define FILL '-'
 

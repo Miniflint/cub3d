@@ -12,11 +12,16 @@
 
 #include "../../inc/cub3d.h"
 
-int	close_window(int keycode, __unused t_all *all)
+int	close_window(void)
 {
-	(void)keycode;
-	printf("Closing the window !\n");
+	t_all	*all;
+
+	all = ft_get_all(NULL);
 	free_all();
+	if (!mlx_clear_window(all->mlx.mlx, all->mlx.window))
+		return (1);
+	mlx_destroy_window(all->mlx.mlx, all->mlx.window);
+	printf("Closing the window !\n");
 	exit (0);
 }
 
@@ -36,15 +41,16 @@ int	create_trgb(int t, int r, int g, int b)
 int	keyDowned(int keycode, t_all *all)
 {
 	if (keycode == K_Q || keycode == K_ESC)
-		close_window(keycode, all);
-	printf("KeyDowned: %i\n", keycode);
+		close_window();
+	(void)all;
+	printf("Key: Down: %i\n", keycode);
 	return (0);
 }
 
 int	keyUpped(int keycode, t_all *all)
 {
 	(void)all;
-	printf("KeyUowned: %i\n", keycode);
+	printf("Key: UP %i\n", keycode);
 	return (0);
 }
 
@@ -53,7 +59,7 @@ static void	loop_hooks(t_all *all)
 	// to destroy window
 	mlx_hook(all->mlx.window, ON_KEYDOWN, 0, keyDowned, all);
 	mlx_hook(all->mlx.window, ON_KEYUP, 0, keyUpped, all);
-	mlx_hook(all->mlx.window, ON_DESTROY, 0, close_window, all);
+	mlx_hook(all->mlx.window, ON_DESTROY, 0, close_window, NULL);
 }
 
 int	win_mlx_loop(t_all *all)
@@ -69,7 +75,10 @@ int	win_mlx_loop(t_all *all)
 	{
 		x = 0;
 		while (x++ < all->txtr.r_int[0])
-			my_mlx_pixel_put(&img, x, y, create_trgb(0, all->txtr.c_int[0],all->txtr.c_int[1],all->txtr.c_int[2]));
+			if (y > all->txtr.r_int[1] / 2)
+				my_mlx_pixel_put(&img, x, y, create_trgb(0, all->txtr.c_int[0],all->txtr.c_int[1],all->txtr.c_int[2]));
+			else
+				my_mlx_pixel_put(&img, x, y, create_trgb(0, all->txtr.f_int[0],all->txtr.f_int[1],all->txtr.f_int[2]));
 	}
 	mlx_put_image_to_window(all->mlx.mlx, all->mlx.window, img.img, 0, 0);
 	loop_hooks(all);
