@@ -42,6 +42,7 @@ int	create_trgb(int t, int r, int g, int b)
 static void	loop_hooks(t_all *all)
 {
 	// to destroy window
+	// mlx_hook(all->mlx.window, ON_MOUSEMOVE, 0, )
 	mlx_hook(all->mlx.window, ON_KEYDOWN, 0, keyDowned, all);
 	mlx_hook(all->mlx.window, ON_KEYUP, 0, keyUpped, all);
 	mlx_hook(all->mlx.window, ON_DESTROY, 0, close_window, NULL);

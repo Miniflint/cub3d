@@ -12,6 +12,15 @@
 
 #include "../../inc/cub3d.h"
 
+double  calculus_view(t_all *all)
+{
+    if (all->player.angle > (double)(M_PI * 2) - 0.01)
+        all->player.angle = 0;
+    else if (all->player.angle < 0.01)
+        all->player.angle = (double)(M_PI * 2);
+    return (all->player.angle_per_key);
+}
+
 void	move_with_key(t_all *all)
 {
 	if (all->player.moves.key_w)
@@ -23,13 +32,13 @@ void	move_with_key(t_all *all)
 	if (all->player.moves.key_d)
 		all->player.x += (double)0.03;
 	if (all->player.moves.arr_left)
-		all->player.angle += (int)0.03;
+		all->player.angle -= calculus_view(all);
 	if (all->player.moves.arr_right)
-		all->player.angle -= (double)0.02;
+		all->player.angle += calculus_view(all);
 	printf("y: %f - x: %f\tangle: %f\n", all->player.y, all->player.x, all->player.angle);
 	if (!all->map.map[(int)all->player.y][(int)all->player.x]
 		|| all->map.map[(int)all->player.y][(int)all->player.x] == '1')
-		printf("U should be here btw\n");
+		printf("U shouldnt be here btw\n");
 }
 
 void	translate_key(int keycode, t_all *all, int value)
@@ -48,12 +57,12 @@ void	translate_key(int keycode, t_all *all, int value)
 		all->player.moves.arr_left = value;
 	if (keycode == ARR_RIGHT)
 		all->player.moves.arr_right = value;
-	move_with_key(all);
 }
 
 int	keyDowned(int keycode, t_all *all)
 {
 	translate_key(keycode, all, 1);
+	move_with_key(all);
 	return (0);
 }
 

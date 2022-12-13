@@ -40,9 +40,11 @@ typedef struct S_player
 	char		letter;
 	int			start_x;
 	int			start_y;
+	int			look_direction;
 	double		x;
 	double		y;
 	double		angle;
+	double		angle_per_key;
 	t_movement	moves;
 }	t_player;
 

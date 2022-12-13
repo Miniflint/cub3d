@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <math.h>
 # include "../minilib/mlx.h"
 # include "mlxstruct.h"
 # include "cub3dstruct.h"
