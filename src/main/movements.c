@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 13:55:46 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/13 17:15:41 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/14 20:25:21 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,30 +37,26 @@
  */ 
 double  calculus_view(t_all *all)
 {
-    if (all->player.angle > (double)(M_PI * 2))
-        all->player.angle = 0;
-    else if (all->player.angle < 0)
-        all->player.angle = (double)(M_PI * 2);
-    all->player.dx = DISTANCE * cos(all->player.angle);
-    all->player.dy = DISTANCE * sin(all->player.angle);
-    return (all->player.angle_per_key);
+	if (all->player.angle > (double)(M_PI * 2))
+		all->player.angle = 0;
+	else if (all->player.angle < 0)
+		all->player.angle = (double)(M_PI * 2);
+	all->player.dx = DISTANCE * cos(all->player.angle);
+	all->player.dy = DISTANCE * sin(all->player.angle);
+	return (all->player.angle_per_key);
 }
-
 
 /*
  * Fonction pour faire bouger le joueur
  * Fonctionne environ sauf le bug mentionné ci dessus
- * je verrai ça demain
+ * je verrai ça demainß
  * oui plusieurs touche marchent en meme temps
  * oui je me suis fait chier pendant 2 heures
  * oui j'ai une feuille excel
  * oui j'veux mourir atm
 */
-
 static void fill_next_pos(t_all *all, double *npx, double *npy)
 {
-    *npx = all->player.x;
-    *npy = all->player.y;
     if (all->player.moves.key_w)
     {
         *npx += all->player.dx;
@@ -85,51 +81,33 @@ static void fill_next_pos(t_all *all, double *npx, double *npy)
 
 int player_next_pos(t_all *all)
 {
-    double  cpx;
-    double  cpy;
-    int     inpx;
-    int     inpy;
-    char    **map;
+	double  cpx;
+	double  cpy;
+	int     inpx;
+	int     inpy;
+	char    **map;
 
-    fill_next_pos(all, &cpx, &cpy);
-    inpx = (int)cpx;
-    inpy = (int)cpy;
-    map = all->map.map;
-    printf("map[%d]: %s\n", inpy, map[inpy]);
-    if (!map[inpy][inpx] || map[inpy][inpx] == '1')
-        return (1);
-    return (0);
+	cpx = all->player.x;
+	cpy = all->player.y;
+	fill_next_pos(all, &cpx, &cpy);
+	inpx = (int)cpx;
+	inpy = (int)cpy;
+	map = all->map.map;
+	if (!map[inpy][inpx] || map[inpy][inpx] == '1')
+		return (1);
+	return (0);
 }
 
 void	move_with_key(t_all *all)
 {
-    if (player_next_pos(all))
-        return ;
-	if (all->player.moves.key_w)
-    {
-        all->player.x += all->player.dx;
-        all->player.y += all->player.dy;
-    }
-	if (all->player.moves.key_a)
-    {
-        all->player.x += all->player.dy;
-        all->player.y -= all->player.dx;
-    }
-	if (all->player.moves.key_s)
-    {
-        all->player.x -= all->player.dx;
-        all->player.y -= all->player.dy;
-    }
-	if (all->player.moves.key_d)
-    {
-        all->player.y += all->player.dx;
-        all->player.x -= all->player.dy;
-    }
+	if (player_next_pos(all))
+		return ;
+	fill_next_pos(all, &all->player.x, &all->player.y);
 	if (all->player.moves.arr_right)
 		all->player.angle += calculus_view(all);
 	if (all->player.moves.arr_left)
 		all->player.angle -= calculus_view(all);
-    calculus_view(all);
+	calculus_view(all);
 	printf("y: %f - x: %f\tangle: %f\n", all->player.y, all->player.x, all->player.angle);
 }
 

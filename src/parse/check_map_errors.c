@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:33:22 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/13 16:49:34 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/14 19:50:19 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ int	check_view_player(t_all *all)
 	new_map = cp_map(all->map.map, all->map.map_height);
 	if (!new_map)
 		return (1);
-	check_path_player(new_map, (int)all->player.x,
+	check_path_player(new_map, (int)all->player.y,
 		(int)all->player.x, all->player.letter);
-	//print_double_tab(new_map);
+	print_double_tab(new_map);
 	if (check_map_open(new_map))
 	{
 		free_double_tab(new_map);
