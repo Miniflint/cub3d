@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:02:57 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/14 19:48:49 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/14 21:15:02 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,6 @@ void	translate_key(int keycode, t_all *all, int value);
 
 /* WIZARD CALCULUS */
 double  calculus_view(t_all *all);
+void	drawray(t_all *all);
 
 #endif

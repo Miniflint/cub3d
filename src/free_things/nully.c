@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:50:11 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/13 15:31:04 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/14 21:14:29 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,20 @@ static void	set_movement(t_movement *moves)
 	moves->arr_right = 0;
 }
 
+static void ray_nully(t_raycast *ray)
+{
+	ray->r = 0;
+	ray->mx = 0;
+	ray->my = 0;
+	ray->mp = 0;
+	ray->dof = 0;
+	ray->rx = 0;
+	ray->ry = 0;
+	ray->ra = 0;
+	ray->xo = 0;
+	ray->yo = 0;
+}
+
 static void	player_nully(t_player *player)
 {
 	player->x = -1;
@@ -79,11 +93,11 @@ static void	player_nully(t_player *player)
 	player->letter = '\0';
 	player->angle_per_key = 0;
 	set_movement(&(player->moves));
+	ray_nully(&(player->raycast));
 }
 
 void	everything_null(t_all *all)
 {
-	all->raycast = NULL;
 	txtr_nully(&(all->txtr));
 	map_nully(&(all->map));
 	player_nully(&(all->player));

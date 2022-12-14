@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:11:13 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/13 15:30:03 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/14 20:48:59 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,16 @@
 // quand j'en aurai besoin
 typedef struct S_raycast
 {
-	double	x;
-	double	y;
+	int		r;
+	int		mx;
+	int		my;
+	int		mp;
+	int		dof;
+	double	rx;
+	double	ry;
+	double	ra;
+	double	xo;
+	double	yo;
 }	t_raycast;
 
 typedef struct S_movement
@@ -45,6 +53,7 @@ typedef struct S_player
 	double		angle;
 	double		angle_per_key;
 	t_movement	moves;
+	t_raycast	raycast;
 }	t_player;
 
 // va contenir les info du joueur
@@ -82,7 +91,6 @@ typedef struct S_all
 	t_textures	txtr;
 	t_player	player;
 	t_mlx		mlx;
-	t_raycast	*raycast;
 }	t_all;
 
 #endif

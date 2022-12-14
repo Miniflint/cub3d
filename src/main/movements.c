@@ -6,7 +6,7 @@
 /*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 13:55:46 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/14 20:25:21 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/14 21:22:32 by tgoel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,19 @@ double  calculus_view(t_all *all)
  * oui j'ai une feuille excel
  * oui j'veux mourir atm
 */
+void	print_wth_is_that(t_raycast r)
+{
+	printf("mp: %d - ", r.mp);
+	printf("mx: %d - ", r.mx);
+	printf("my: %d\n", r.my);
+	printf("r: %d\n", r.r);
+	printf("ra: %f - ", r.ra);
+	printf("rx: %f - ", r.rx);
+	printf("ry: %f - ", r.ry);
+	printf("xo: %f - ", r.xo);
+	printf("yo: %f\n", r.yo);
+}
+
 static void fill_next_pos(t_all *all, double *npx, double *npy)
 {
     if (all->player.moves.key_w)
@@ -77,6 +90,8 @@ static void fill_next_pos(t_all *all, double *npx, double *npy)
         *npx -= all->player.dy;
         *npy += all->player.dx;
     }
+	drawray(all);
+	print_wth_is_that(all->player.raycast);
 }
 
 int player_next_pos(t_all *all)
@@ -100,15 +115,15 @@ int player_next_pos(t_all *all)
 
 void	move_with_key(t_all *all)
 {
-	if (player_next_pos(all))
-		return ;
-	fill_next_pos(all, &all->player.x, &all->player.y);
 	if (all->player.moves.arr_right)
 		all->player.angle += calculus_view(all);
 	if (all->player.moves.arr_left)
 		all->player.angle -= calculus_view(all);
+	if (player_next_pos(all))
+		return ;
 	calculus_view(all);
-	printf("y: %f - x: %f\tangle: %f\n", all->player.y, all->player.x, all->player.angle);
+	fill_next_pos(all, &all->player.x, &all->player.y);
+	printf("y: %f - x: %f\tangle: %f\n\n", all->player.y, all->player.x, all->player.angle);
 }
 
 void	translate_key(int keycode, t_all *all, int value)
