@@ -79,6 +79,8 @@ static void	player_nully(t_player *player)
 	player->look_direction = -1;
 	player->angle = 0;
 	player->angle_per_key = 0;
+	player->dx = 0;
+	player->dy = 0;
 	set_movement(&(player->moves));
 }
 

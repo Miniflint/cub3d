@@ -5,6 +5,7 @@
 		"__locale": "c",
 		"sstream": "c",
 		"check_utils": "c",
-		"cub3dstruct.h": "c"
+		"cub3dstruct.h": "c",
+		"bitset": "c"
 	}
 }

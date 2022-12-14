@@ -43,6 +43,8 @@ typedef struct S_player
 	int			look_direction;
 	double		x;
 	double		y;
+	double		dx;
+	double		dy;
 	double		angle;
 	double		angle_per_key;
 	t_movement	moves;

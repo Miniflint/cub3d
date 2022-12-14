@@ -12,33 +12,78 @@
 
 #include "../../inc/cub3d.h"
 
-double  calculus_view(t_all *all)
-{
+/*
+ * calcul les delta en fonction de la ou la personne regarde
+ * je t'expliquerai quand on se voit parce que'c 'est un bordel pas croyable
+ * quick explications -> voir la feuille excel
+ * au lieu d'utiliser des degré j'utilise des radiants
+ * ça permet de faire de belle choses comme avoir un cos / sin précis
+ * y'a encore un petit bug au niveau de comment pi * 2 est géré et c'est chiant
+ * le bug vient de
+ (
     if (all->player.angle > (double)(M_PI * 2) - 0.01)
         all->player.angle = 0;
-    else if (all->player.angle < 0.01)
+    else if (all->player.angle < 0.1)
         all->player.angle = (double)(M_PI * 2);
+ )
+ * j'arrive pas a trouver un bon moyen de faire en sorte que si l'angle est supérieur à PI * 2
+ * bah l'angle doit etre 0
+ * valeur max de angle doit être:  6.283184
+ * et la valeur min doit être 0
+ * enfaite j'ai trouvé en écrivant donc c'est bon
+ * nouveau petit bug
+ * je sais pas pourquoi mais le y ne bouge jamais
+ * je verrai ça demain 
+ */ 
+double  calculus_view(t_all *all)
+{
+    if (all->player.angle > (double)(M_PI * 2))
+        all->player.angle = 0;
+    else if (all->player.angle < 0)
+        all->player.angle = (double)(M_PI * 2);
+    all->player.dx = DISTANCE * cos(all->player.angle);
+    all->player.dy = DISTANCE * sin(all->player.angle);
     return (all->player.angle_per_key);
 }
 
+
+/*
+ * Fonction pour faire bouger le joueur
+ * Fonctionne environ sauf le bug mentionné ci dessus
+ * je verrai ça demain
+ * oui plusieurs touche marchent en meme temps
+ * oui je me suis fait chier pendant 2 heures
+ * oui j'ai une feuille excel
+ * oui j'veux mourir atm
+*/
 void	move_with_key(t_all *all)
 {
 	if (all->player.moves.key_w)
-		all->player.y += (double)0.03;
+    {
+        all->player.x += all->player.dx;
+        all->player.y += all->player.dy;
+    }
 	if (all->player.moves.key_a)
-		all->player.x -= (double)0.03;
+    {
+        all->player.x -= all->player.dx;
+        all->player.y += all->player.dy;
+    }
 	if (all->player.moves.key_s)
-		all->player.y -= (double)0.03;
+    {
+        all->player.x -= all->player.dx;
+        all->player.y -= all->player.dy;
+    }
 	if (all->player.moves.key_d)
-		all->player.x += (double)0.03;
-	if (all->player.moves.arr_left)
-		all->player.angle -= calculus_view(all);
+    {
+        all->player.y -= all->player.dy;
+        all->player.x += all->player.dx;
+    }
 	if (all->player.moves.arr_right)
 		all->player.angle += calculus_view(all);
+	if (all->player.moves.arr_left)
+		all->player.angle -= calculus_view(all);
+    calculus_view(all);
 	printf("y: %f - x: %f\tangle: %f\n", all->player.y, all->player.x, all->player.angle);
-	if (!all->map.map[(int)all->player.y][(int)all->player.x]
-		|| all->map.map[(int)all->player.y][(int)all->player.x] == '1')
-		printf("U shouldnt be here btw\n");
 }
 
 void	translate_key(int keycode, t_all *all, int value)

@@ -50,6 +50,8 @@ static int	__init_player(t_all *all)
 		return (1);
 	all->player.angle = 0;
 	all->player.angle_per_key = (double)(M_PI / (double)16);
+    all->player.dx = DISTANCE * cos(all->player.angle);
+    all->player.dy = DISTANCE * sin(all->player.angle);
 	return (0);
 }
 

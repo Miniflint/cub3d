@@ -23,6 +23,7 @@
 # include "cub3dstruct.h"
 
 # define FILL '-'
+# define DISTANCE 0.3
 
 /* GET */
 void	test(void);
