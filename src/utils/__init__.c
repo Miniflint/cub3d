@@ -12,16 +12,16 @@
 
 #include "../../inc/cub3d.h"
 
-static int	get_angle(char c)
+static double	get_angle(char c)
 {
 	if (c == 'N')
-		return (0);
+		return (0.5);
 	if (c == 'W')
-		return (90);
+		return (1);
 	if (c == 'S')
-		return (180);
+		return (1.5);
 	if (c == 'E')
-		return (270);
+		return (0);
 	return (-1);
 }
 
@@ -29,6 +29,9 @@ static int	get_angle(char c)
 // check_nb_player in src/parse/check_map_error.c
 // check_player_letter in src/parse/check_utils.c
 // letter_pos_on_map in src/parse/check_utils.c
+// added roatation de depart
+// je t'expliquerai le calcul encore
+// mais en gros c'est rotation * PI (parce qu'on travail avec radiant plutot que degree pour cos et sin)
 static int	__init_player(t_all *all)
 {
 	int	pos[2];
@@ -41,17 +44,14 @@ static int	__init_player(t_all *all)
 	letter_pos_on_map(all->map.map, all->player.letter, pos);
 	if (pos[0] == -1 || pos[1] == -1)
 		handle_error("Couldn't find the player on the map");
-	all->player.start_y = pos[0];
-	all->player.start_x = pos[1];
-	all->player.x = (double)all->player.start_x;
-	all->player.y = (double)all->player.start_y;
-	all->player.look_direction = get_angle(all->player.letter);
-	if (all->player.look_direction == -1)
+	all->player.x = (double)pos[1];
+	all->player.y = (double)pos[0];
+	all->player.angle = get_angle(all->player.letter) * M_PI;
+	if (all->player.angle == -1)
 		return (1);
-	all->player.angle = 0;
-	all->player.angle_per_key = (double)(M_PI / (double)16);
-    all->player.dx = DISTANCE * cos(all->player.angle);
+	all->player.dx = DISTANCE * cos(all->player.angle);
     all->player.dy = DISTANCE * sin(all->player.angle);
+	all->player.angle_per_key = (double)(M_PI / (double)PI_DIVIDE);
 	return (0);
 }
 

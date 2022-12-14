@@ -24,6 +24,7 @@
 
 # define FILL '-'
 # define DISTANCE 0.3
+# define PI_DIVIDE 16
 
 /* GET */
 void	test(void);
@@ -78,5 +79,8 @@ void	move_with_key(t_all *all);
 int		keyUpped(int keycode, t_all *all);
 int		keyDowned(int keycode, t_all *all);
 void	translate_key(int keycode, t_all *all, int value);
+
+/* WIZARD CALCULUS */
+double  calculus_view(t_all *all);
 
 #endif

@@ -31,8 +31,8 @@ int	check_view_player(t_all *all)
 	new_map = cp_map(all->map.map, all->map.map_height);
 	if (!new_map)
 		return (1);
-	check_path_player(new_map, all->player.start_y,
-		all->player.start_x, all->player.letter);
+	check_path_player(new_map, (int)all->player.x,
+		(int)all->player.x, all->player.letter);
 	//print_double_tab(new_map);
 	if (check_map_open(new_map))
 	{

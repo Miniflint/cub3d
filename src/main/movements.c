@@ -56,8 +56,55 @@ double  calculus_view(t_all *all)
  * oui j'ai une feuille excel
  * oui j'veux mourir atm
 */
+
+static void fill_next_pos(t_all *all, double *npx, double *npy)
+{
+    *npx = all->player.x;
+    *npy = all->player.y;
+    if (all->player.moves.key_w)
+    {
+        *npx += all->player.dx;
+        *npy += all->player.dy;
+    }
+	if (all->player.moves.key_a)
+    {
+        *npx += all->player.dy;
+        *npy -= all->player.dx;
+    }
+	if (all->player.moves.key_s)
+    {
+        *npx -= all->player.dx;
+        *npy -= all->player.dy;
+    }
+	if (all->player.moves.key_d)
+    {
+        *npx -= all->player.dy;
+        *npy += all->player.dx;
+    }
+}
+
+int player_next_pos(t_all *all)
+{
+    double  cpx;
+    double  cpy;
+    int     inpx;
+    int     inpy;
+    char    **map;
+
+    fill_next_pos(all, &cpx, &cpy);
+    inpx = (int)cpx;
+    inpy = (int)cpy;
+    map = all->map.map;
+    printf("map[%d]: %s\n", inpy, map[inpy]);
+    if (!map[inpy][inpx] || map[inpy][inpx] == '1')
+        return (1);
+    return (0);
+}
+
 void	move_with_key(t_all *all)
 {
+    if (player_next_pos(all))
+        return ;
 	if (all->player.moves.key_w)
     {
         all->player.x += all->player.dx;

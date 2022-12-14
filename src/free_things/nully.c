@@ -71,16 +71,13 @@ static void	set_movement(t_movement *moves)
 
 static void	player_nully(t_player *player)
 {
-	player->letter = '\0';
-	player->start_x = -1;
-	player->start_y = -1;
 	player->x = -1;
 	player->y = -1;
-	player->look_direction = -1;
-	player->angle = 0;
-	player->angle_per_key = 0;
 	player->dx = 0;
 	player->dy = 0;
+	player->angle = 0;
+	player->letter = '\0';
+	player->angle_per_key = 0;
 	set_movement(&(player->moves));
 }
 

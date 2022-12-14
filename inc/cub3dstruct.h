@@ -38,9 +38,6 @@ typedef struct S_movement
 typedef struct S_player
 {
 	char		letter;
-	int			start_x;
-	int			start_y;
-	int			look_direction;
 	double		x;
 	double		y;
 	double		dx;
