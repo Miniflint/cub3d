@@ -65,8 +65,8 @@ void	move_with_key(t_all *all)
     }
 	if (all->player.moves.key_a)
     {
-        all->player.x -= all->player.dx;
-        all->player.y += all->player.dy;
+        all->player.x += all->player.dy;
+        all->player.y -= all->player.dx;
     }
 	if (all->player.moves.key_s)
     {
@@ -75,8 +75,8 @@ void	move_with_key(t_all *all)
     }
 	if (all->player.moves.key_d)
     {
-        all->player.y -= all->player.dy;
-        all->player.x += all->player.dx;
+        all->player.y += all->player.dx;
+        all->player.x -= all->player.dy;
     }
 	if (all->player.moves.arr_right)
 		all->player.angle += calculus_view(all);
