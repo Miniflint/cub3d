@@ -24,12 +24,12 @@ typedef struct S_raycast
 	int		mx;
 	int		my;
 	int		mp;
-	int		dof;
-	double	rx;
-	double	ry;
-	double	ra;
-	double	xo;
-	double	yo;
+	int		depth;
+	double	x;
+	double	y;
+	double	angle;
+	double	x_offset;
+	double	y_offset;
 }	t_raycast;
 
 typedef struct S_movement

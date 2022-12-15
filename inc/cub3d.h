@@ -71,8 +71,10 @@ char	*ft_strstr(char *s1, char *substr);
 char	**cp_map(char **map, int height_map);
 
 /* MLX */
-int		win_mlx_loop(t_all *all);
 int		close_window(void);
+void    draw_map(t_all *all);
+int		win_mlx_loop(t_all *all);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 /* MOVES */
 void	move_with_key(t_all *all);

@@ -75,12 +75,12 @@ static void ray_nully(t_raycast *ray)
 	ray->mx = 0;
 	ray->my = 0;
 	ray->mp = 0;
-	ray->dof = 0;
-	ray->rx = 0;
-	ray->ry = 0;
-	ray->ra = 0;
-	ray->xo = 0;
-	ray->yo = 0;
+	ray->depth = 0;
+	ray->x = 0;
+	ray->y = 0;
+	ray->angle = 0;
+	ray->x_offset = 0;
+	ray->y_offset = 0;
 }
 
 static void	player_nully(t_player *player)

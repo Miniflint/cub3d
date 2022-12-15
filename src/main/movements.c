@@ -57,15 +57,20 @@ double  calculus_view(t_all *all)
 */
 void	print_wth_is_that(t_raycast r)
 {
+	printf("\nIdk what the fuck this is: \n\t");
 	printf("mp: %d - ", r.mp);
 	printf("mx: %d - ", r.mx);
 	printf("my: %d\n", r.my);
+	printf("Idk what this is either: \n\t");
 	printf("r: %d\n", r.r);
-	printf("ra: %f - ", r.ra);
-	printf("rx: %f - ", r.rx);
-	printf("ry: %f - ", r.ry);
-	printf("xo: %f - ", r.xo);
-	printf("yo: %f\n", r.yo);
+	printf("Rayon and angles: \n\t");
+	printf("Angle: %f - ", r.angle);
+	printf("Rayon x: %f - ", r.x);
+	printf("Rayon y: %f - \n", r.y);
+	printf("Offset: \n\t");
+	printf("Offset x: %f - ", r.x_offset);
+	printf("Offset y: %f\n", r.y_offset);
+	printf("\n");
 }
 
 static void fill_next_pos(t_all *all, double *npx, double *npy)
@@ -90,8 +95,6 @@ static void fill_next_pos(t_all *all, double *npx, double *npy)
         *npx -= all->player.dy;
         *npy += all->player.dx;
     }
-	drawray(all);
-	print_wth_is_that(all->player.raycast);
 }
 
 int player_next_pos(t_all *all)
@@ -123,7 +126,10 @@ void	move_with_key(t_all *all)
 		return ;
 	calculus_view(all);
 	fill_next_pos(all, &all->player.x, &all->player.y);
-	printf("y: %f - x: %f\tangle: %f\n\n", all->player.y, all->player.x, all->player.angle);
+	draw_map(all);
+	//drawray(all);
+	//print_wth_is_that(all->player.raycast);
+	printf("y: %f - x: %f\tangle: %f\n", all->player.y, all->player.x, all->player.angle);
 }
 
 void	translate_key(int keycode, t_all *all, int value)

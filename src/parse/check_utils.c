@@ -27,17 +27,17 @@ void	check_path_player(char **map, int row, int col, char letter)
 {
 	if (row < 0 || col < 0 || !map || !map[row] || !map[row][col])
 		return ;
-	if (map[row][col] == FILL || map[row][col] == '1' || map[row][col] == ' ')
+	if (map[row][col] == FILL || map[row][col] == '1' ||map[row][col] == ' ')
 		return ;
 	if (map[row][col] != letter)
 		map[row][col] = FILL;
-	if (map[row - 1][col] != FILL)
+	if (map[row - 1][col] != FILL && map[row - 1][col] != '1')
 		check_path_player(map, row - 1, col, letter);
-	if (map[row + 1][col] != FILL)
+	if (map[row + 1][col] != FILL && map[row + 1][col] != '1')
 		check_path_player(map, row + 1, col, letter);
-	if (map[row][col - 1] != FILL)
+	if (map[row][col - 1] != FILL && map[row][col - 1] != '1')
 		check_path_player(map, row, col - 1, letter);
-	if (map[row][col + 1] != FILL)
+	if (map[row][col + 1] != FILL && map[row][col + 1] != '1')
 		check_path_player(map, row, col + 1, letter);
 	return ;
 }

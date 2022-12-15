@@ -33,7 +33,7 @@ int	check_view_player(t_all *all)
 		return (1);
 	check_path_player(new_map, (int)all->player.y,
 		(int)all->player.x, all->player.letter);
-	print_double_tab(new_map);
+	//print_double_tab(new_map);
 	if (check_map_open(new_map))
 	{
 		free_double_tab(new_map);
