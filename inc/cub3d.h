@@ -23,7 +23,7 @@
 # include "cub3dstruct.h"
 
 # define FILL '-'
-# define DISTANCE 0.3
+# define DISTANCE 0.15
 # define PI_DIVIDE 16
 
 /* GET */
@@ -72,6 +72,7 @@ char	**cp_map(char **map, int height_map);
 
 /* MLX */
 int		close_window(void);
+int	    create_trgb(int t, int r, int g, int b);
 void    draw_map(t_all *all);
 int		win_mlx_loop(t_all *all);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);

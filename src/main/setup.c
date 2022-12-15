@@ -20,7 +20,6 @@ int	close_window(void)
 	free_all();
 	if (!mlx_clear_window(all->mlx.mlx, all->mlx.window))
 		return (1);
-	mlx_destroy_image(all->mlx.mlx, all->mlx.image->img);
 	mlx_destroy_window(all->mlx.mlx, all->mlx.window);
 	printf("Closing the window !\n");
 	exit (0);
@@ -36,7 +35,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 int	create_trgb(int t, int r, int g, int b)
 {
-	return (t << 24 | r << 16 | g << 8 | b);
+	return (t << 24 | r << 16 | b << 8 | g);
 }
 
 static void	loop_hooks(t_all *all)
@@ -68,6 +67,7 @@ int	win_mlx_loop(t_all *all)
 				my_mlx_pixel_put(&img, x, y, create_trgb(0, all->txtr.f_int[0],all->txtr.f_int[1],all->txtr.f_int[2]));
 	}
 	mlx_put_image_to_window(all->mlx.mlx, all->mlx.window, img.img, 0, 0);
+	draw_map(all);
 	loop_hooks(all);
 	mlx_loop(all->mlx.mlx);
 	return (0);

@@ -1,8 +1,8 @@
 #include "../../inc/cub3d.h"
 
-#define PX 64
+#define PX 32
 
-void    big_pixel(t_data *img, int size, int x, int y, int color)
+void    big_pixel(t_data *img, int size, int y, int x, int color)
 {
     int i;
     int j;
@@ -40,13 +40,11 @@ void    draw_map(t_all *all)
         {
             size = 0;
             if (map[y][x] == '1')
-                big_pixel(&img, PX, (x * PX) + 10, (y * PX) + 10, 0xB4D455);
+                big_pixel(&img, PX, (y * PX), (x * PX), 0x00FF00);
             else
-                big_pixel(&img, PX, (x * PX) + 10, (y * PX) + 10, 0x0000FF);
-            big_pixel(&img, 12, (all->player.x * PX) + 10, (all->player.y * PX) + 10, 0xABCDEF);
-            printf("%c", map[y][x]);
+                big_pixel(&img, PX, (y * PX), (x * PX), 0x0000FF);
+            big_pixel(&img, PX / 4, (all->player.y * PX) + 10, (all->player.x * PX) + 10, 0xFF0000);
         }
-        printf("\n");
     }
 	mlx_put_image_to_window(all->mlx.mlx, all->mlx.window, img.img, 10, 10);
 }
