@@ -1,7 +1,5 @@
 #include "../../inc/cub3d.h"
 
-#define PX 32
-
 void    big_pixel(t_data *img, int size, int y, int x, int color)
 {
     int i;
@@ -31,7 +29,7 @@ void    draw_map(t_all *all)
     y = -1;
 	all->mlx.image = &img;
     map = all->map.map;
-	img.img = mlx_new_image(all->mlx.mlx, all->txtr.r_int[0] / 2, all->txtr.r_int[1] / 2);
+	img.img = mlx_new_image(all->mlx.mlx, 256, 256);
     img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
     while (map[++y])
     {
@@ -43,7 +41,7 @@ void    draw_map(t_all *all)
                 big_pixel(&img, PX, (y * PX), (x * PX), 0x00FF00);
             else
                 big_pixel(&img, PX, (y * PX), (x * PX), 0x0000FF);
-            big_pixel(&img, PX / 4, (all->player.y * PX) + 10, (all->player.x * PX) + 10, 0xFF0000);
+            big_pixel(&img, PX / 4, (all->player.y * PX), (all->player.x * PX), 0xFF0000);
         }
     }
 	mlx_put_image_to_window(all->mlx.mlx, all->mlx.window, img.img, 10, 10);
