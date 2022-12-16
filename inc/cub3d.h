@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbars <sbars@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:02:57 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/14 21:15:02 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/16 13:42:26 by sbars            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@
 /* GET */
 void	test(void);
 t_all	*ft_get_all(t_all *all);
-void print_double_tab(char **array_double);
+void	print_double_tab(char **array_double);
 
 /* INIT */
 int		__init__(t_all *all);
-int	__init_textures(t_all *all);
+int		init_textures(t_all *all);
 
 /* PARSING */
 int		check_ext(char *path);
@@ -72,8 +72,8 @@ char	**cp_map(char **map, int height_map);
 
 /* MLX */
 int		close_window(void);
-int	    create_trgb(int t, int r, int g, int b);
-void    draw_map(t_all *all);
+int		create_trgb(int t, int r, int g, int b);
+void	draw_map(t_all *all);
 int		win_mlx_loop(t_all *all);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
@@ -84,7 +84,7 @@ int		keyDowned(int keycode, t_all *all);
 void	translate_key(int keycode, t_all *all, int value);
 
 /* WIZARD CALCULUS */
-double  calculus_view(t_all *all);
+double	calculus_view(t_all *all);
 void	drawray(t_all *all);
 
 #endif
