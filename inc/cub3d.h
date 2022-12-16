@@ -25,7 +25,7 @@
 # define FILL '-'
 # define DISTANCE 0.15
 # define PI_DIVIDE 16
-# define PX 16
+# define PX 32
 
 /* GET */
 void	test(void);
