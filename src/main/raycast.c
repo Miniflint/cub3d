@@ -13,6 +13,15 @@
 #include "../../inc/cub3d.h"
 #define MAX_DEPTH 8
 
+/* 
+ * O		= ray direction
+ * x, y		= player pos
+ * dx, dy	= offset between tiles (1)
+ * Depending on 0:
+ *
+ * 
+*/
+
 // void	drawray(t_all *all)
 // {
 // 	int		i;
@@ -29,14 +38,14 @@
 // 		{
 // 			all->player.raycast.y = (int)all->player.y-0.000001;
 // 			all->player.raycast.x = all->player.x-all->player.y * atan + all->player.x;
-// 			all->player.raycast.y_offset = 0;
+// 			all->player.raycast.y_offset = 1;
 // 			all->player.raycast.x_offset = -all->player.raycast.y_offset * atan;
 // 		}
 // 		if (all->player.raycast.angle < M_PI)
 // 		{
 // 			all->player.raycast.y = (int)all->player.y;
 // 			all->player.raycast.x = (all->player.x-all->player.y)*atan+all->player.x;
-// 			all->player.raycast.y_offset = 0;
+// 			all->player.raycast.y_offset = 1;
 // 			all->player.raycast.x_offset = -all->player.raycast.y_offset * atan;
 // 		}
 // 		if ((all->player.raycast.angle <= 0.00001 && all->player.raycast.angle >= -0.00001)
@@ -68,7 +77,25 @@
 // 	}
 // }
 
+// player pos, angle, dx, dy
+
+static double	delete_virgule(double nb)
+{
+	while (nb > 1)
+		nb -= 1;
+	return (nb);
+}
+
 void	drawray(t_all *all)
 {
-	(void)all;
+	int	i;
+
+	i = 0;
+	all->player.raycast.y_offset = 1 - delete_virgule(all->player.y);
+	all->player.raycast.x_offset = delete_virgule(all->player.x);
+	printf("%f, %f\n", all->player.raycast.y_offset, all->player.raycast.x_offset);
+	while (i++ < 1)
+	{
+
+	}
 }
