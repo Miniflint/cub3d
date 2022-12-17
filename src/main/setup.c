@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbars <sbars@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:55:19 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/13 17:10:20 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/16 17:33:31 by sbars            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ int	win_mlx_loop(t_all *all)
 	draw_map(all);
 	loop_hooks(all);
 	mlx_loop(all->mlx.mlx);
+	mlx_destroy_image(all->mlx.mlx, img.img);
 	return (0);
 }
