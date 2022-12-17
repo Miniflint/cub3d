@@ -66,6 +66,8 @@ static int	__util_txtr_init(t_all *all)
 // assigner toutes les bonnes valeurs au bons endroits
 // cut_strstr_dup in src/parse/cut_strstr.c
 // ft_strstr in src/utils/ft_strstr.c
+// problem si les noms ont en majuscule: exemple ./textures/EAST.xpm *(ca va choper ST.xpm)*
+// fix by checking if there's nothing before OR a \n (debut fichier / debut de ligne)
 int	__init_textures(t_all *all)
 {
 	char	*map_file;
@@ -86,5 +88,7 @@ int	__init_textures(t_all *all)
 		handle_error("Problem parsing colors");
 	if (__util_txtr_init(all))
 		handle_error("Problem parsing colors");
+	if (check_xpm_exist(all))
+		handle_error("texture path is not possible");
 	return (0);
 }

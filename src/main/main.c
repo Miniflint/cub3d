@@ -45,6 +45,7 @@ void	test(void)
 // free quand c'est fini
 // __init__ in __src/utils/__init__.c
 // check_view_player in src/parse/check_map_errors.c
+
 int	main(int argc, char **argv)
 {
 	t_all	all;

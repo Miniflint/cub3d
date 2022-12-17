@@ -6,7 +6,7 @@
 /*   By: sbars <sbars@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 13:55:46 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/16 17:34:12 by sbars            ###   ########.fr       */
+/*   Updated: 2022/12/17 16:53:06 by sbars            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,11 +130,10 @@ void	move_with_key(t_all *all)
 	calculus_view(all);
 	fill_next_pos(all, &all->player.x, &all->player.y);
 	draw_map(all);
-	//drawray(all);
-	plot_image(all);
+	drawray(all);
+	print_wth_is_that(all->player.raycast);
+	printf("y: %f - x: %f\tangle: %f\n", all->player.y, all->player.x, all->player.angle);
 }
-	//print_wth_is_that(all->player.raycast);
-	//printf("y: %f - x: %f\tangle: %f\n", all->player.y, all->player.x, all->player.angle);
 
 void	translate_key(int keycode, t_all *all, int value)
 {

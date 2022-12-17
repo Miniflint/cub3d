@@ -6,7 +6,7 @@
 /*   By: sbars <sbars@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:02:57 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/16 17:24:14 by sbars            ###   ########.fr       */
+/*   Updated: 2022/12/17 16:52:51 by sbars            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void	free_double_tab(char **str);
 /* UTILS */
 int		ft_atoi(char *str);
 int		ft_strlen(char *str);
+int 	check_fd_valid(char *path);
+int 	check_xpm_exist(t_all *all);
 int		ft_occurence(char *str, char c);
 int		ft_strlen_uc(char *str, char c);
 char	*ft_strdup(char *str);
@@ -73,9 +75,9 @@ char	**cp_map(char **map, int height_map);
 
 /* MLX */
 int		close_window(void);
-int		create_trgb(int t, int r, int g, int b);
-void	draw_map(t_all *all);
 int		win_mlx_loop(t_all *all);
+int	    create_trgb(int t, int r, int g, int b);
+void    draw_map(t_all *all);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 /* MOVES */

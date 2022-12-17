@@ -62,3 +62,27 @@ int	check_map_open(char **modified_map)
 	}
 	return (0);
 }
+
+int	check_fd_valid(char *path)
+{
+	int	fd;
+
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+		return (1);
+	close(fd);
+	return (0);
+}
+
+int	check_xpm_exist(t_all *all)
+{
+	if (check_fd_valid(all->txtr.no))
+		return (1);
+	if (check_fd_valid(all->txtr.so))
+		return (2);
+	if (check_fd_valid(all->txtr.we))
+		return (3);
+	if (check_fd_valid(all->txtr.ea))
+		return (4);
+	return (0);
+}

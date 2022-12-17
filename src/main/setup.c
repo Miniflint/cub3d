@@ -47,6 +47,20 @@ static void	loop_hooks(t_all *all)
 	mlx_hook(all->mlx.window, ON_DESTROY, 0, close_window, NULL);
 }
 
+void	assign_textures(t_all *all)
+{
+	char 	*tmp;
+	int		x;
+	int		y;
+	t_data	t;
+
+	tmp = ft_strdup(all->txtr.ea);
+	t.img = mlx_xpm_file_to_image(all->mlx.mlx, tmp, &x, &y);
+    t.addr = mlx_get_data_addr(t.img, &t.bits_per_pixel, &t.line_length, &t.endian);
+	mlx_put_image_to_window(all->mlx.mlx, all->mlx.window, t.img, x, y);
+	free(tmp);
+}
+
 int	win_mlx_loop(t_all *all)
 {
 	t_data	img;
@@ -67,6 +81,7 @@ int	win_mlx_loop(t_all *all)
 				my_mlx_pixel_put(&img, x, y, create_trgb(0, all->txtr.f_int[0],all->txtr.f_int[1],all->txtr.f_int[2]));
 	}
 	mlx_put_image_to_window(all->mlx.mlx, all->mlx.window, img.img, 0, 0);
+	assign_textures(all);
 	draw_map(all);
 	loop_hooks(all);
 	mlx_loop(all->mlx.mlx);
