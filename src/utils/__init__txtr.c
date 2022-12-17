@@ -73,13 +73,13 @@ int	__init_textures(t_all *all)
 	char	*map_file;
 
 	map_file = all->map.file;
-	all->txtr.no = cut_strstr_dup(ft_strstr(map_file, "NO"), '\n', 0, 2);
-	all->txtr.so = cut_strstr_dup(ft_strstr(map_file, "SO"), '\n', 0, 2);
-	all->txtr.we = cut_strstr_dup(ft_strstr(map_file, "WE"), '\n', 0, 2);
-	all->txtr.ea = cut_strstr_dup(ft_strstr(map_file, "EA"), '\n', 0, 2);
-	all->txtr.f = cut_strstr_dup(ft_strstr(map_file, "F"), '\n', 0, 1);
-	all->txtr.c = cut_strstr_dup(ft_strstr(map_file, "C"), '\n', 0, 1);
-	all->txtr.r = cut_strstr_dup(ft_strstr(map_file, "R"), '\n', 0, 1);
+	all->txtr.no = cut_strstr_dup(ft_strstr(map_file, "NO "), '\n', 0, 2);
+	all->txtr.so = cut_strstr_dup(ft_strstr(map_file, "SO "), '\n', 0, 2);
+	all->txtr.we = cut_strstr_dup(ft_strstr(map_file, "WE "), '\n', 0, 2);
+	all->txtr.ea = cut_strstr_dup(ft_strstr(map_file, "EA "), '\n', 0, 2);
+	all->txtr.f = cut_strstr_dup(ft_strstr(map_file, "F "), '\n', 0, 1);
+	all->txtr.c = cut_strstr_dup(ft_strstr(map_file, "C "), '\n', 0, 1);
+	all->txtr.r = cut_strstr_dup(ft_strstr(map_file, "R "), '\n', 0, 1);
 	if (!all->txtr.no || !all->txtr.so || !all->txtr.we || !all->txtr.ea
 		|| !all->txtr.f || !all->txtr.c || !all->txtr.r)
 		handle_error("Couldn't get textures");
