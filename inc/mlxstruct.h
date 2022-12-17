@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   mlxstruct.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbars <sbars@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:11:13 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/13 17:09:39 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/16 13:40:11 by sbars            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MLXSTRUCT_H
 # define MLXSTRUCT_H
 
-#include "cub3d.h"
+# include "cub3d.h"
 
-typedef struct	s_data {
+typedef struct s_data {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;

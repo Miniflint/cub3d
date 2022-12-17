@@ -6,7 +6,7 @@
 /*   By: sbars <sbars@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:55:19 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/16 17:33:31 by sbars            ###   ########.fr       */
+/*   Updated: 2022/12/17 18:36:51 by sbars            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,12 @@ void	assign_textures(t_all *all)
 	int		y;
 	t_data	t;
 
+	x = 10;
+	y = 10;
 	tmp = ft_strdup(all->txtr.ea);
 	t.img = mlx_xpm_file_to_image(all->mlx.mlx, tmp, &x, &y);
     t.addr = mlx_get_data_addr(t.img, &t.bits_per_pixel, &t.line_length, &t.endian);
-	mlx_put_image_to_window(all->mlx.mlx, all->mlx.window, t.img, x, y);
+	//mlx_put_image_to_window(all->mlx.mlx, all->mlx.window, t.img, x, y);
 	free(tmp);
 }
 

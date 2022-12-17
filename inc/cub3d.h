@@ -6,7 +6,7 @@
 /*   By: sbars <sbars@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:02:57 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/17 16:52:51 by sbars            ###   ########.fr       */
+/*   Updated: 2022/12/17 17:17:11 by sbars            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int		close_window(void);
 int		win_mlx_loop(t_all *all);
 int	    create_trgb(int t, int r, int g, int b);
 void    draw_map(t_all *all);
+void    drawray(t_all *all);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 /* MOVES */

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   __init__txtr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbars <sbars@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:37:39 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/12 15:47:01 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/17 17:28:29 by sbars            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,21 @@ int	__init_textures(t_all *all)
 	if (check_xpm_exist(all))
 		handle_error("texture path is not possible");
 	return (0);
+}
+
+t_data	*__init__image(t_all *all, int width, int height)
+{
+	t_data	*img;
+
+	img = malloc(sizeof(t_data));
+	if (!img)
+		handle_error("Couldn't malloc image");
+	img->img = mlx_new_image(all->mlx.mlx, width, height);
+	if (!img->img)
+		handle_error("Couldn't create image");
+	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
+			&img->line_length, &img->endian);
+	if (!img->addr)
+		handle_error("Couldn't get image address");
+	return (img);
 }
