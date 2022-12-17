@@ -81,7 +81,7 @@ int	win_mlx_loop(t_all *all)
 				my_mlx_pixel_put(&img, x, y, create_trgb(0, all->txtr.f_int[0],all->txtr.f_int[1],all->txtr.f_int[2]));
 	}
 	mlx_put_image_to_window(all->mlx.mlx, all->mlx.window, img.img, 0, 0);
-	assign_textures(all);
+	//assign_textures(all);
 	draw_map(all);
 	loop_hooks(all);
 	mlx_loop(all->mlx.mlx);

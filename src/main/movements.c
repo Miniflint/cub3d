@@ -126,9 +126,9 @@ void	move_with_key(t_all *all)
 		return ;
 	calculus_view(all);
 	fill_next_pos(all, &all->player.x, &all->player.y);
-	draw_map(all);
 	drawray(all);
-	print_wth_is_that(all->player.raycast);
+	draw_map(all);
+	//print_wth_is_that(all->player.raycast);
 	printf("y: %f - x: %f\tangle: %f\n", all->player.y, all->player.x, all->player.angle);
 }
 

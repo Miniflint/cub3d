@@ -12,6 +12,8 @@ void    big_pixel(t_data *img, int size, int y, int x, int color)
         while (j < size)
         {
             my_mlx_pixel_put(img, x + i, y + j, color);
+            if (j == size - 1 || i == size - 1)
+                my_mlx_pixel_put(img, x + i, y + j, 0x00000);
             j++;
         }
         i++;
@@ -44,5 +46,6 @@ void    draw_map(t_all *all)
             big_pixel(&img, PX / 4, (all->player.y * PX), (all->player.x * PX), 0xFF0000);
         }
     }
+    big_pixel(&img, PX / 4, (all->player.raycast.y * PX), (all->player.raycast.x * PX), 0xB4D455);
 	mlx_put_image_to_window(all->mlx.mlx, all->mlx.window, img.img, 10, 10);
 }
