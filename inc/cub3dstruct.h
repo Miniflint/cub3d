@@ -18,19 +18,35 @@
 // je sais pas encore quoi mettre la dedans
 // mais je l'ai quand même crée parce qu'on sait jamais
 // quand j'en aurai besoin
-typedef struct S_raycast
+typedef struct S_hit_wall
 {
-	int		r;
+	int		depth;
 	int		mx;
 	int		my;
-	int		mp;
-	int		depth;
 	double	x;
 	double	y;
-	double	angle;
 	double	x_offset;
 	double	y_offset;
+}	t_hit;
+
+typedef struct S_raycast
+{
+	double	angle;
+	t_hit	v;
+	t_hit	h;
 }	t_raycast;
+
+typedef struct S_raycast2
+{
+	double	angle;
+	int		depth;
+	int		mx;
+	int		my;
+	double	x;
+	double	y;
+	double	x_offset;
+	double	y_offset;
+}	t_raycast2;
 
 typedef struct S_movement
 {
@@ -54,6 +70,7 @@ typedef struct S_player
 	double		angle_per_key;
 	t_movement	moves;
 	t_raycast	raycast;
+	t_raycast2	raycast2;
 }	t_player;
 
 // va contenir les info du joueur

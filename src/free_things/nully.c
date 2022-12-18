@@ -69,18 +69,22 @@ static void	set_movement(t_movement *moves)
 	moves->arr_right = 0;
 }
 
+static void	vert_hor_nully(t_hit *hit)
+{
+	hit->depth = 0;
+	hit->mx = 0;
+	hit->my = 0;
+	hit->x = 0;
+	hit->y = 0;
+	hit->x_offset = 0;
+	hit->y_offset = 0;
+}
+
 static void ray_nully(t_raycast *ray)
 {
-	ray->r = 0;
-	ray->mx = 0;
-	ray->my = 0;
-	ray->mp = 0;
-	ray->depth = 0;
-	ray->x = 0;
-	ray->y = 0;
 	ray->angle = 0;
-	ray->x_offset = 0;
-	ray->y_offset = 0;
+	vert_hor_nully(&(ray->h));
+	vert_hor_nully(&(ray->v));
 }
 
 static void	player_nully(t_player *player)

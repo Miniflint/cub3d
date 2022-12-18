@@ -41,8 +41,8 @@ double  calculus_view(t_all *all)
 		all->player.angle = 0;
 	else if (all->player.angle < 0)
 		all->player.angle = (double)(M_PI * 2);
-	all->player.dx = DISTANCE * cos(all->player.angle);
-	all->player.dy = DISTANCE * sin(all->player.angle);
+	all->player.dx = DISTANCE * sin(all->player.angle);
+	all->player.dy = DISTANCE * cos(all->player.angle);
 	return (all->player.angle_per_key);
 }
 
@@ -58,18 +58,15 @@ double  calculus_view(t_all *all)
 void	print_wth_is_that(t_raycast r)
 {
 	printf("\nIdk what the fuck this is: \n\t");
-	printf("mp: %d - ", r.mp);
-	printf("mx: %d - ", r.mx);
-	printf("my: %d\n", r.my);
-	printf("Idk what this is either: \n\t");
-	printf("r: %d\n", r.r);
+	printf("mx: %d - ", r.h.mx);
+	printf("my: %d\n", r.h.my);
 	printf("Rayon and angles: \n\t");
 	printf("Angle: %f - ", r.angle);
-	printf("Rayon x: %f - ", r.x);
-	printf("Rayon y: %f - \n", r.y);
+	printf("Rayon x: %f - ", r.h.x);
+	printf("Rayon y: %f - \n", r.h.y);
 	printf("Offset: \n\t");
-	printf("Offset x: %f - ", r.x_offset);
-	printf("Offset y: %f\n", r.y_offset);
+	printf("Offset x: %f - ", r.h.x_offset);
+	printf("Offset y: %f\n", r.h.y_offset);
 	printf("\n");
 }
 
@@ -119,9 +116,9 @@ int player_next_pos(t_all *all)
 void	move_with_key(t_all *all)
 {
 	if (all->player.moves.arr_right)
-		all->player.angle += calculus_view(all);
-	if (all->player.moves.arr_left)
 		all->player.angle -= calculus_view(all);
+	if (all->player.moves.arr_left)
+		all->player.angle += calculus_view(all);
 	if (player_next_pos(all))
 		return ;
 	calculus_view(all);
