@@ -30,7 +30,8 @@
 /* GET */
 void	test(void);
 t_all	*ft_get_all(t_all *all);
-void print_double_tab(char **array_double);
+void    print_double_tab(char **array_double);
+void	print_wth_is_that(t_raycast r);
 
 /* INIT */
 int		__init__(t_all *all);

@@ -46,5 +46,6 @@ void    draw_map(t_all *all)
             big_pixel(&img, PX / 4, (all->player.y * PX), (all->player.x * PX), 0xFF0000);
         }
     }
+    big_pixel(&img, PX / 4, (all->player.raycast.y) * PX, (all->player.raycast.x) * PX, 0xFFFFFF);
 	mlx_put_image_to_window(all->mlx.mlx, all->mlx.window, img.img, 10, 10);
 }
