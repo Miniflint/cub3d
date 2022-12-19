@@ -6,7 +6,7 @@
 /*   By: sbars <sbars@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:02:57 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/17 17:17:11 by sbars            ###   ########.fr       */
+/*   Updated: 2022/12/19 17:12:39 by sbars            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ void	print_double_tab(char **array_double);
 /* INIT */
 int		__init__(t_all *all);
 int		__init_textures(t_all *all);
+t_data	*__img_init(void *mlx, int w, int h);
+// t_data	*__init__image(t_all *all, int width, int height);
+int     open_xpm_images(t_all *all);
 
 /* PARSING */
 int		check_ext(char *path);
@@ -91,5 +94,10 @@ void	translate_key(int keycode, t_all *all, int value);
 double	calculus_view(t_all *all);
 // void	drawray(t_all *all);
 void    plot_image(t_all *all);
+
+/* DRAW */
+t_data  *draw_cube(t_all *all);
+int     get_col_text_pixel(t_data *img, int x, int y);
+void    draw_column_texture(t_data *img, int x, int cube_height);
 
 #endif

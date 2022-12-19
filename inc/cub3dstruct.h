@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3dstruct.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbars <sbars@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:11:13 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/14 20:48:59 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/19 15:37:15 by sbars            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,10 @@ typedef struct S_textures
 	char	*so;
 	char	*we;
 	char	*ea;
+	t_data	*no_img;
+	t_data	*so_img;
+	t_data	*we_img;
+	t_data	*ea_img;
 	char	*f;
 	char	*c;
 	char	*r;

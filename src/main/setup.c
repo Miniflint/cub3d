@@ -6,7 +6,7 @@
 /*   By: sbars <sbars@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:55:19 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/17 18:36:51 by sbars            ###   ########.fr       */
+/*   Updated: 2022/12/19 17:13:38 by sbars            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,11 @@ int	win_mlx_loop(t_all *all)
 			else
 				my_mlx_pixel_put(&img, x, y, create_trgb(0, all->txtr.f_int[0],all->txtr.f_int[1],all->txtr.f_int[2]));
 	}
-	mlx_put_image_to_window(all->mlx.mlx, all->mlx.window, img.img, 0, 0);
 	assign_textures(all);
+	open_xpm_images(all);
+	mlx_put_image_to_window(all->mlx.mlx, all->mlx.window, img.img, 0, 0);
+	draw_cube(all);
+	// mlx_put_image_to_window(all->mlx.mlx, all->mlx.window, draw_cube(all)->img, 0, 0);
 	draw_map(all);
 	loop_hooks(all);
 	mlx_loop(all->mlx.mlx);

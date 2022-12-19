@@ -6,7 +6,7 @@
 /*   By: sbars <sbars@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:37:39 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/17 17:28:29 by sbars            ###   ########.fr       */
+/*   Updated: 2022/12/19 17:32:20 by sbars            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,46 @@ static int	__util_txtr_init(t_all *all)
 	return (0);
 }
 
+void	ft_bzero(void *s, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		((char *)s)[i] = 0;
+		i++;
+	}
+}
+
+int	open_xpm_images(t_all *all)
+{
+	int		width;
+	int 	height;
+
+	all->txtr.no_img = malloc(sizeof(t_data));
+	all->txtr.so_img = malloc(sizeof(t_data));
+	all->txtr.we_img = malloc(sizeof(t_data));
+	all->txtr.ea_img = malloc(sizeof(t_data));
+	all->txtr.no_img->img = mlx_xpm_file_to_image(all->mlx.mlx, all->txtr.no, &width, &height);
+	all->txtr.no_img->addr = mlx_get_data_addr(all->txtr.no_img->img, &all->txtr.no_img->bits_per_pixel, &all->txtr.no_img->line_length, &all->txtr.no_img->endian);
+	// img.img = mlx_xpm_file_to_image(all->mlx.mlx, all->txtr.so, &width, &height);
+	// img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+	// all->txtr.so_img = &img;
+	// ft_bzero(&img, sizeof(t_data));
+	// img.img = mlx_xpm_file_to_image(all->mlx.mlx, all->txtr.we, &width, &height);
+	// img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+	// all->txtr.we_img = &img;
+	// ft_bzero(&img, sizeof(t_data));
+	// img.img = mlx_xpm_file_to_image(all->mlx.mlx, all->txtr.ea, &width, &height);
+	// img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+	// all->txtr.ea_img = &img;
+	// ft_bzero(&img, sizeof(t_data));
+	// if (!img.img || !img.img || !img.img || !img.img)
+		// return (1);
+	return (0);
+}
+
 // assigner toutes les bonnes valeurs au bons endroits
 // cut_strstr_dup in src/parse/cut_strstr.c
 // ft_strstr in src/utils/ft_strstr.c
@@ -90,6 +130,8 @@ int	__init_textures(t_all *all)
 		handle_error("Problem parsing colors");
 	if (check_xpm_exist(all))
 		handle_error("texture path is not possible");
+	// if (open_xpm_images(all))
+	// 	handle_error("xpm image open failed");
 	return (0);
 }
 
@@ -97,7 +139,8 @@ t_data	*__init__image(t_all *all, int width, int height)
 {
 	t_data	*img;
 
-	img = malloc(sizeof(t_data));
+	img = NULL;
+	img = (t_data *) malloc(sizeof(t_data));
 	if (!img)
 		handle_error("Couldn't malloc image");
 	img->img = mlx_new_image(all->mlx.mlx, width, height);
@@ -108,4 +151,18 @@ t_data	*__init__image(t_all *all, int width, int height)
 	if (!img->addr)
 		handle_error("Couldn't get image address");
 	return (img);
+}
+
+t_data	*__img_init(void *mlx, int w, int h)
+{
+	t_data	*img;
+
+	img = malloc(sizeof(t_data));
+	img->img = mlx_new_image(mlx, w, h);
+	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
+			&img->line_length, &img->endian);
+	if (img->addr == NULL)
+		exit(EXIT_FAILURE);
+	else
+		return (img);
 }
