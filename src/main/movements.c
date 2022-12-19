@@ -41,8 +41,8 @@ double  calculus_view(t_all *all)
 		all->player.angle = 0;
 	else if (all->player.angle < 0)
 		all->player.angle = (double)(M_PI * 2);
-	all->player.dx = DISTANCE * sin(all->player.angle);
-	all->player.dy = DISTANCE * cos(all->player.angle);
+	all->player.dx = DISTANCE * cos(all->player.angle);
+	all->player.dy = DISTANCE * sin(all->player.angle);
 	return (all->player.angle_per_key);
 }
 
@@ -116,9 +116,9 @@ int player_next_pos(t_all *all)
 void	move_with_key(t_all *all)
 {
 	if (all->player.moves.arr_right)
-		all->player.angle -= calculus_view(all);
-	if (all->player.moves.arr_left)
 		all->player.angle += calculus_view(all);
+	if (all->player.moves.arr_left)
+		all->player.angle -= calculus_view(all);
 	if (player_next_pos(all))
 		return ;
 	calculus_view(all);

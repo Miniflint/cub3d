@@ -38,14 +38,21 @@ typedef struct S_raycast
 
 typedef struct S_raycast2
 {
-	double	angle;
-	int		depth;
-	int		mx;
-	int		my;
-	double	x;
-	double	y;
-	double	x_offset;
-	double	y_offset;
+	int r;
+	int	mx;
+	int	my;
+	int	mp;
+	int	dof;
+	int	side;
+	double	vx;
+	double	vy;
+	double	rx;
+	double	ry;
+	double	ra;
+	double	xo;
+	double	yo;
+	double	disV;
+	double	disH;
 }	t_raycast2;
 
 typedef struct S_movement
