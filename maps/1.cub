@@ -1,15 +1,15 @@
 
 F 0,255,0
 
-NO textures/east.xpm
-SO textures/east.xpm
+NO textures/lichen.xpm
+SO textures/lichen.xpm
 
 C 0,0,255
 
 R 1920 1080
 
-WE textures/east.xpm
-EA textures/east.xpm
+WE textures/lichen.xpm
+EA textures/lichen.xpm
 
 11111111
 10000001

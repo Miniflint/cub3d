@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movements.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbars <sbars@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 13:55:46 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/14 21:22:32 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/17 16:53:06 by sbars            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@
  * y'a encore un petit bug au niveau de comment pi * 2 est géré et c'est chiant
  * le bug vient de
  (
-    if (all->player.angle > (double)(M_PI * 2) - 0.01)
-        all->player.angle = 0;
-    else if (all->player.angle < 0.1)
-        all->player.angle = (double)(M_PI * 2);
+	if (all->player.angle > (double)(M_PI * 2) - 0.01)
+		all->player.angle = 0;
+	else if (all->player.angle < 0.1)
+		all->player.angle = (double)(M_PI * 2);
  )
- * j'arrive pas a trouver un bon moyen de faire en sorte que si l'angle est supérieur à PI * 2
+ * j'arrive pas a trouver un bon moyen de faire en sorte que 
+ * si l'angle est supérieur à PI * 2
  * bah l'angle doit etre 0
  * valeur max de angle doit être:  6.283184
  * et la valeur min doit être 0
@@ -34,8 +35,10 @@
  * nouveau petit bug
  * je sais pas pourquoi mais le y ne bouge jamais
  * je verrai ça demain 
- */ 
-double  calculus_view(t_all *all)
+ */
+
+// this function ROTATES the angle and direction vector (dx, dy)
+double	calculus_view(t_all *all)
 {
 	if (all->player.angle > (double)(M_PI * 2))
 		all->player.angle = 0;
@@ -70,37 +73,37 @@ void	print_wth_is_that(t_raycast r)
 	printf("\n");
 }
 
-static void fill_next_pos(t_all *all, double *npx, double *npy)
+static void	fill_next_pos(t_all *all, double *npx, double *npy)
 {
-    if (all->player.moves.key_w)
-    {
-        *npx += all->player.dx;
-        *npy += all->player.dy;
-    }
+	if (all->player.moves.key_w)
+	{
+		*npx += all->player.dx;
+		*npy += all->player.dy;
+	}
 	if (all->player.moves.key_a)
-    {
-        *npx += all->player.dy;
-        *npy -= all->player.dx;
-    }
+	{
+		*npx += all->player.dy;
+		*npy -= all->player.dx;
+	}
 	if (all->player.moves.key_s)
-    {
-        *npx -= all->player.dx;
-        *npy -= all->player.dy;
-    }
+	{
+		*npx -= all->player.dx;
+		*npy -= all->player.dy;
+	}
 	if (all->player.moves.key_d)
-    {
-        *npx -= all->player.dy;
-        *npy += all->player.dx;
-    }
+	{
+		*npx -= all->player.dy;
+		*npy += all->player.dx;
+	}
 }
 
-int player_next_pos(t_all *all)
+int	player_next_pos(t_all *all)
 {
-	double  cpx;
-	double  cpy;
-	int     inpx;
-	int     inpy;
-	char    **map;
+	double	cpx;
+	double	cpy;
+	int		inpx;
+	int		inpy;
+	char	**map;
 
 	cpx = all->player.x;
 	cpy = all->player.y;
