@@ -6,7 +6,7 @@
 /*   By: sbars <sbars@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:50:11 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/19 14:11:06 by sbars            ###   ########.fr       */
+/*   Updated: 2022/12/20 15:48:49 by sbars            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ static void	txtr_nully(t_textures *txtr)
 	txtr->so = NULL;
 	txtr->we = NULL;
 	txtr->ea = NULL;
-	// txtr->no_img = NULL;
-	// txtr->so_img = NULL;
-	// txtr->we_img = NULL;
-	// txtr->ea_img = NULL;
+	txtr->no_img = NULL;
+	txtr->so_img = NULL;
+	txtr->we_img = NULL;
+	txtr->ea_img = NULL;
 	i = -1;
 	while (++i < 3)
 	{

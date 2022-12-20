@@ -6,7 +6,7 @@
 /*   By: sbars <sbars@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:37:39 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/19 17:32:20 by sbars            ###   ########.fr       */
+/*   Updated: 2022/12/20 15:57:27 by sbars            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,17 +75,36 @@ void	ft_bzero(void *s, size_t n)
 	}
 }
 
-int	open_xpm_images(t_all *all)
+t_data	*__init_xpm_image(char *path, t_all *all)
 {
-	int		width;
-	int 	height;
+	t_data	*img;
 
-	all->txtr.no_img = malloc(sizeof(t_data));
-	all->txtr.so_img = malloc(sizeof(t_data));
-	all->txtr.we_img = malloc(sizeof(t_data));
-	all->txtr.ea_img = malloc(sizeof(t_data));
-	all->txtr.no_img->img = mlx_xpm_file_to_image(all->mlx.mlx, all->txtr.no, &width, &height);
-	all->txtr.no_img->addr = mlx_get_data_addr(all->txtr.no_img->img, &all->txtr.no_img->bits_per_pixel, &all->txtr.no_img->line_length, &all->txtr.no_img->endian);
+	img = (t_data *)malloc(sizeof(t_data));
+	// img->img = NULL;
+	// img->addr = NULL;
+	// img->bits_per_pixel = 0;
+	// img->line_length = 0;
+	// img->endian = 0;
+	// img->width = 0;
+	// img->height = 0;
+	if (!img)
+		return (false);
+	ft_bzero(img, sizeof(t_data));
+	img->img = mlx_xpm_file_to_image(all->mlx.mlx, path, &img->width, &img->height);
+	if (!img->img)
+		return (false);
+	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel, &img->line_length, &img->endian);
+	if (!img->addr)
+		return (false);
+	return (img);
+}
+
+bool	open_xpm_images(t_all *all)
+{
+	all->txtr.no_img = __init_xpm_image(all->txtr.no, all);
+	// mlx_put_image_to_window(all->mlx.mlx, all->mlx.window, all->txtr.no_img->img, 0, 0);
+	// sleep(1000);
+	// exit(EXIT_SUCCESS);
 	// img.img = mlx_xpm_file_to_image(all->mlx.mlx, all->txtr.so, &width, &height);
 	// img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	// all->txtr.so_img = &img;
@@ -100,7 +119,7 @@ int	open_xpm_images(t_all *all)
 	// ft_bzero(&img, sizeof(t_data));
 	// if (!img.img || !img.img || !img.img || !img.img)
 		// return (1);
-	return (0);
+	return (true);
 }
 
 // assigner toutes les bonnes valeurs au bons endroits
