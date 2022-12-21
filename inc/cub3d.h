@@ -84,6 +84,7 @@ int		win_mlx_loop(t_all *all);
 int	    create_trgb(int t, int r, int g, int b);
 void    draw_map(t_all *all);
 void    drawray(t_all *all);
+void	drawRays2D(t_all *all, t_data *img);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 /* MOVES */
@@ -98,7 +99,7 @@ double	calculus_view(t_all *all);
 void    plot_image(t_all *all);
 
 /* DRAW */
-void    draw_cubes(t_all   *all, int *col_size);
+void    draw_cubes(t_all   *all, int *col_size, t_data *dst);
 int     get_col_text_pixel(t_data *img, int x, int y);
 void    draw_column_texture(t_data *src, t_data *dst, int x, int cube_height);
 

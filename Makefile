@@ -9,7 +9,7 @@ UDIR	= $(SDIR)/utils
 FDIR	= $(SDIR)/free_things
 MLXDIR	= minilib
 
-MSRCS	= main.c setup.c movements.c raycast.c draw_minimap.c draw_cube.c
+MSRCS	= main.c setup.c movements.c raycast.c draw_minimap.c draw_cube.c new_ray_cast.c
 PSRCS	= read_map.c cut_strstr.c check_map_errors.c get_map.c check_map_valid.c check_utils.c
 USRCS	= ft_get_all.c __init__.c ft_strjoin.c ft_strlen.c ft_strdup.c ft_strstr.c ft_atoi.c __init__txtr.c
 FSRCS	= free_structs.c handle_error.c nully.c

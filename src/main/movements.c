@@ -127,9 +127,10 @@ void	move_with_key(t_all *all)
 	calculus_view(all);
 	fill_next_pos(all, &all->player.x, &all->player.y);
 	drawray(all);
+//	drawRays2D(all);
 	draw_map(all);
-	//print_wth_is_that(all->player.raycast);
-	printf("y: %f - x: %f\tangle: %f\n", all->player.y, all->player.x, all->player.angle);
+	print_wth_is_that(all->player.raycast);
+//	printf("y: %f - x: %f\tangle: %f\n", all->player.y, all->player.x, all->player.angle);
 }
 
 void	translate_key(int keycode, t_all *all, int value)

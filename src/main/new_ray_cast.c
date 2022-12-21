@@ -9,13 +9,20 @@ int FixAng(int a)
     return a;
 }
 
-void drawRays2D(t_all *all)
+double degToRad(double deg)
 {
-    int r,mx,my,mp,dof,side; float vx,vy,rx,ry,ra,xo,yo,disV,disH;
-    float Tan;
+	return (deg / 57.29578);
+}
+
+/*
+void drawRays2D(t_all *all, t_data *img)
+{
+    int r,mx,my,mp,dof,side;
+	double vx,vy,rx,ry,ra,xo,yo,disV,disH;
+    double Tan;
  
-    ra=FixAng(all->player.angle); //ray set back 30 degrees
-    for(r=0;r<1;r++)
+    ra = FixAng(all->player.angle); //ray set back 30 degrees
+    for (r=0;r<1;r++)
     { //---Vertical--- 
         dof=0;
         side=0;
@@ -46,7 +53,7 @@ void drawRays2D(t_all *all)
         { 
             mx = (int)(rx);
             my = (int)(ry);
-            mp = my * mapX + mx;        
+            mp = my * mapX + mx;
             if (mp > 0 && mp < mapX * mapY && map[mp] == '1')
             {
                 dof = 8;
@@ -120,3 +127,4 @@ void drawRays2D(t_all *all)
         ra = FixAng(ra-1);//go to next ray
     }
 }
+*/
