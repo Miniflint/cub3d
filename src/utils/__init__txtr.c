@@ -6,7 +6,7 @@
 /*   By: sbars <sbars@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:37:39 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/20 15:57:27 by sbars            ###   ########.fr       */
+/*   Updated: 2022/12/21 13:37:14 by sbars            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ t_data	*__init_xpm_image(char *path, t_all *all)
 bool	open_xpm_images(t_all *all)
 {
 	all->txtr.no_img = __init_xpm_image(all->txtr.no, all);
+	all->txtr.so_img = __init_xpm_image(all->txtr.so, all);
 	// mlx_put_image_to_window(all->mlx.mlx, all->mlx.window, all->txtr.no_img->img, 0, 0);
 	// sleep(1000);
 	// exit(EXIT_SUCCESS);
