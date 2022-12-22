@@ -6,7 +6,7 @@ SO textures/lichen.xpm
 
 C 0,0,255
 
-R 1920 1080
+R 1360 768
 
 WE textures/lichen.xpm
 EA textures/lichen.xpm

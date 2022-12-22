@@ -118,10 +118,10 @@ static void set_offset(t_all *all)
 
 void	drawray_hor(t_all *all)
 {
-	int		i;
+	//int		i;
 	char	**map;
 
-	i = 0;
+	//i = 0;
 	map = all->map.map;
 	all->player.raycast.angle = all->player.angle;
 	set_offset(all);
@@ -152,10 +152,10 @@ void	drawray_hor(t_all *all)
 
 void	drawray_ver(t_all *all)
 {
-	int		i;
+	//int		i;
 	char	**map;
 
-	i = 0;
+	//i = 0;
 	map = all->map.map;
 	all->player.raycast.angle = all->player.angle;
 	set_offset(all);
