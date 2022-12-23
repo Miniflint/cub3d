@@ -2,8 +2,8 @@
 
 void    big_pixel(t_data *img, int size, int y, int x, int color)
 {
-    int i;
-    int j;
+	int	i;
+	int	j;
 
     i = 0;
     while (i < size)
@@ -20,7 +20,7 @@ void    big_pixel(t_data *img, int size, int y, int x, int color)
     }
 }
 
-void    draw_map(t_all *all)
+void	draw_map(t_all *all)
 {
     char    **map;
     int x;
@@ -34,9 +34,9 @@ void    draw_map(t_all *all)
 	hit_hor = cal_hyp(all->player.y, all->player.x, all->player.raycast.h.y, all->player.raycast.h.x);
 	printf("hit vertical: %f - hit horizontal: %f\n", hit_vert, hit_hor);
 
-    y = -1;
+	y = -1;
 	all->mlx.image = &img;
-    map = all->map.map;
+	map = all->map.map;
 	img.img = mlx_new_image(all->mlx.mlx, 256, 256);
     img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
     while (map[++y])
@@ -44,7 +44,7 @@ void    draw_map(t_all *all)
         x = -1;
         while (map[y][++x])
         {
-            size = 0;
+            //size = 0;
             if (map[y][x] == '1')
                 big_pixel(&img, PX, (y * PX), (x * PX), 0x00FF00);
             else

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbars <sbars@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 02:02:57 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/14 21:15:02 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/20 15:56:44 by sbars            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <math.h>
+# include <stdbool.h>
 # include "../minilib/mlx.h"
 # include "mlxstruct.h"
 # include "cub3dstruct.h"
@@ -35,7 +36,10 @@ void	print_wth_is_that(t_raycast r);
 
 /* INIT */
 int		__init__(t_all *all);
-int	__init_textures(t_all *all);
+int		__init_textures(t_all *all);
+t_data	*__img_init(void *mlx, int w, int h);
+// t_data	*__init__image(t_all *all, int width, int height);
+bool     open_xpm_images(t_all *all);
 
 /* PARSING */
 int		check_ext(char *path);
@@ -79,6 +83,8 @@ int		close_window(void);
 int		win_mlx_loop(t_all *all);
 int	    create_trgb(int t, int r, int g, int b);
 void    draw_map(t_all *all);
+void    drawray(t_all *all);
+void	drawRays2D(t_all *all, t_data *img);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 /* MOVES */
@@ -88,8 +94,14 @@ int		keyDowned(int keycode, t_all *all);
 void	translate_key(int keycode, t_all *all, int value);
 
 /* WIZARD CALCULUS */
-double      calculus_view(t_all *all);
-void	    drawray(t_all *all);
+double	calculus_view(t_all *all);
+void	drawray(t_all *all);
+void    plot_image(t_all *all);
 double		cal_hyp(double a, double b, double c, double d);
+
+/* DRAW */
+void    draw_cubes(t_all   *all, int *col_size, t_data *dst);
+int     get_col_text_pixel(t_data *img, int x, int y);
+void    draw_column_texture(t_data *src, t_data *dst, int x, int cube_height);
 
 #endif

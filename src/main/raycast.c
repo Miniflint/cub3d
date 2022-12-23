@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbars <sbars@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 20:45:04 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/14 21:30:41 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/19 11:43:23 by sbars            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,10 +144,10 @@ static void set_offset(t_all *all)
 
 void	drawray_hor(t_all *all, double cond)
 {
-	int		i;
+	//int		i;
 	char	**map;
 
-	i = 0;
+	//i = 0;
 	map = all->map.map;
 	all->player.raycast.angle = all->player.angle;
 	set_offset(all);
@@ -178,10 +178,10 @@ void	drawray_hor(t_all *all, double cond)
 
 void	drawray_ver(t_all *all)
 {
-	int		i;
+	//int		i;
 	char	**map;
 
-	i = 0;
+	//i = 0;
 	map = all->map.map;
 	all->player.raycast.angle = all->player.angle;
 	set_offset(all);

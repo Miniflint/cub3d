@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgoel <tgoel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbars <sbars@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:55:19 by tgoel             #+#    #+#             */
-/*   Updated: 2022/12/13 17:10:20 by tgoel            ###   ########.fr       */
+/*   Updated: 2022/12/20 17:35:23 by sbars            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,12 @@ void	assign_textures(t_all *all)
 	int		y;
 	t_data	t;
 
+	x = 10;
+	y = 10;
 	tmp = ft_strdup(all->txtr.ea);
 	t.img = mlx_xpm_file_to_image(all->mlx.mlx, tmp, &x, &y);
     t.addr = mlx_get_data_addr(t.img, &t.bits_per_pixel, &t.line_length, &t.endian);
-	mlx_put_image_to_window(all->mlx.mlx, all->mlx.window, t.img, x, y);
+	//mlx_put_image_to_window(all->mlx.mlx, all->mlx.window, t.img, x, y);
 	free(tmp);
 }
 
@@ -66,10 +68,13 @@ int	win_mlx_loop(t_all *all)
 	t_data	img;
 	int		x;
 	int		y;
+	int		*size_array;
 
+	size_array = NULL;
 	all->mlx.image = &img;
-	img.img = mlx_new_image(all->mlx.mlx, all->txtr.r_int[0], all->txtr.r_int[1]);
-    img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+	img = *(__img_init(all->mlx.mlx, all->txtr.r_int[0], all->txtr.r_int[1]));
+	//img.img = mlx_new_image(all->mlx.mlx, all->txtr.r_int[0], all->txtr.r_int[1]);
+//    img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	y = 0;
 	while (y++ < all->txtr.r_int[1] - 2)
 	{
@@ -80,10 +85,14 @@ int	win_mlx_loop(t_all *all)
 			else
 				my_mlx_pixel_put(&img, x, y, create_trgb(0, all->txtr.f_int[0],all->txtr.f_int[1],all->txtr.f_int[2]));
 	}
+	// assign_textures(all);
+	open_xpm_images(all);
+	draw_cubes(all, size_array, &img);
 	mlx_put_image_to_window(all->mlx.mlx, all->mlx.window, img.img, 0, 0);
-	//assign_textures(all);
+//	drawRays2D(all, &img);
 	draw_map(all);
 	loop_hooks(all);
 	mlx_loop(all->mlx.mlx);
+	mlx_destroy_image(all->mlx.mlx, img.img);
 	return (0);
 }
