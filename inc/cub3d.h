@@ -95,8 +95,9 @@ void	translate_key(int keycode, t_all *all, int value);
 
 /* WIZARD CALCULUS */
 double	calculus_view(t_all *all);
-// void	drawray(t_all *all);
+void	drawray(t_all *all);
 void    plot_image(t_all *all);
+double		cal_hyp(double a, double b, double c, double d);
 
 /* DRAW */
 void    draw_cubes(t_all   *all, int *col_size, t_data *dst);
