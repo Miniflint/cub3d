@@ -25,7 +25,6 @@ void	draw_map(t_all *all)
     char    **map;
     int x;
     int y;
-    int size;
     t_data  img;
 	double	hit_vert;
 	double	hit_hor;
@@ -44,7 +43,6 @@ void	draw_map(t_all *all)
         x = -1;
         while (map[y][++x])
         {
-            //size = 0;
             if (map[y][x] == '1')
                 big_pixel(&img, PX, (y * PX), (x * PX), 0x00FF00);
             else
