@@ -184,10 +184,74 @@ void	drawray_ver(t_all *all)
 	}
 }
 
+double		cal_hyp(double a, double b, double c, double d)
+{
+	int	ac;
+	int	bd;
+	int	result;
+
+	ac = fabs(a - c);
+	bd = fabs(b - d);
+	result = sqrt(pow(ac, 2) + pow(bd, 2));
+	return (result);
+}
+
+void	draw_all(t_all *all)
+{
+	int		i;
+	char	**map;
+
+	i = 0;
+	map = all->map.map;
+	all->player.raycast.angle = all->player.angle;
+	set_offset(all);
+	draw_vert(all);
+	draw_hor(all);
+	all->player.raycast.h.mx = (int)all->player.raycast.h.x;
+	all->player.raycast.h.my = (int)all->player.raycast.h.y;
+	all->player.raycast.v.mx = (int)all->player.raycast.v.x;
+	all->player.raycast.v.my = (int)all->player.raycast.v.y;
+	while ((all->player.raycast.v.depth < MAX_DEPTH && all->player.raycast.v.depth < MAX_DEPTH
+		&& all->player.raycast.v.my < all->map.map_height) ||
+		(all->player.raycast.h.depth < MAX_DEPTH && all->player.raycast.h.depth < MAX_DEPTH
+		&& all->player.raycast.h.my < all->map.map_height))
+	{
+		if (all->player.raycast.v.my < 0 || all->player.raycast.h.mx < 0 || all->player.raycast.h.my > 1500 || all->player.raycast.h.mx > 1500)
+		{
+			all->player.raycast.v.depth = MAX_DEPTH;
+			all->player.raycast.h.depth = MAX_DEPTH;
+			break ;
+		}
+		printf("%f\n", cal_hyp(all->player.y, all->player.x, all->player.raycast.v.y, all->player.raycast.v.x));
+		printf("%f\n", cal_hyp(all->player.y, all->player.x, all->player.raycast.h.y, all->player.raycast.h.x));
+		if ((map[all->player.raycast.v.my][all->player.raycast.v.mx]
+			&& map[all->player.raycast.v.my][all->player.raycast.v.mx] == '1')
+			|| (map[all->player.raycast.h.my][all->player.raycast.h.mx]
+			&& map[all->player.raycast.h.my][all->player.raycast.h.mx] == '1'))
+			{
+				all->player.raycast.v.depth = MAX_DEPTH;
+				all->player.raycast.h.depth = MAX_DEPTH;
+			}
+		else
+		{
+			all->player.raycast.v.y += 1;
+			all->player.raycast.v.x += 1 / tan(all->player.raycast.angle);
+			all->player.raycast.v.mx = (int)all->player.raycast.v.x;
+			all->player.raycast.v.my = (int)all->player.raycast.v.y;
+			all->player.raycast.h.y += 1 * tan(all->player.raycast.angle);
+			all->player.raycast.h.x += 1;
+			all->player.raycast.h.mx = (int)all->player.raycast.h.x;
+			all->player.raycast.h.my = (int)all->player.raycast.h.y;
+			all->player.raycast.v.depth += 1;
+			all->player.raycast.h.depth += 1;
+		}
+	}
+}
 
 void	drawray(t_all *all)
 {
 	set_offset(all);
 	//drawray_hor(all);
-	drawray_ver(all);
+	//drawray_ver(all);
+	draw_all(all);
 }
