@@ -88,7 +88,8 @@ int		keyDowned(int keycode, t_all *all);
 void	translate_key(int keycode, t_all *all, int value);
 
 /* WIZARD CALCULUS */
-double  calculus_view(t_all *all);
-void	drawray(t_all *all);
+double      calculus_view(t_all *all);
+void	    drawray(t_all *all);
+double		cal_hyp(double a, double b, double c, double d);
 
 #endif

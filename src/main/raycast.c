@@ -88,10 +88,23 @@ static void draw_hor(t_all *all)
 {
 	if (all->player.raycast.angle > 0 && all->player.raycast.angle < (M_PI / 2))
 	{
-		all->player.raycast.h.x =  all->player.x + all->player.raycast.h.x_offset / tan(all->player.raycast.angle);
+		all->player.raycast.h.x = all->player.x + all->player.raycast.h.x_offset /* tan(all->player.raycast.angle) */;
+		all->player.raycast.h.y = all->player.y - all->player.raycast.h.y_offset;
+	}
+	else if (all->player.raycast.angle > (M_PI / 2) && all->player.raycast.angle < M_PI)
+	{
+		all->player.raycast.h.x = all->player.x - all->player.raycast.h.x_offset /* tan(all->player.raycast.angle) */;
+		all->player.raycast.h.y = all->player.y - all->player.raycast.h.y_offset;
+	}
+	else if (all->player.raycast.angle > M_PI && all->player.raycast.angle < (M_PI * 1.5))
+	{
+		all->player.raycast.h.x = all->player.x - all->player.raycast.h.x_offset /* tan(all->player.raycast.angle) */;
 		all->player.raycast.h.y = all->player.y + all->player.raycast.h.y_offset;
-		//printf("%f\n", all->player.raycast.x_offset / tan(all->player.raycast.angle));
-		//printf("%f - %f\n", all->player.raycast.y, all->player.raycast.x);
+	}
+	else if (all->player.raycast.angle > (M_PI * 1.5) && all->player.raycast.angle < (M_PI * 2))
+	{
+		all->player.raycast.h.x = all->player.x + all->player.raycast.h.x_offset /* tan(all->player.raycast.angle) */;
+		all->player.raycast.h.y = all->player.y + all->player.raycast.h.y_offset;
 	}
 }
 
@@ -100,9 +113,22 @@ static void draw_vert(t_all *all)
 	if (all->player.raycast.angle > 0 && all->player.raycast.angle < (M_PI / 2))
 	{
 		all->player.raycast.v.x = all->player.x + all->player.raycast.v.x_offset;
-		all->player.raycast.v.y = all->player.y + all->player.raycast.v.y_offset * tan(all->player.raycast.angle);
-		//printf("%f\n", all->player.raycast.x_offset / tan(all->player.raycast.angle));
-		//printf("%f - %f\n", all->player.raycast.y, all->player.raycast.x);
+		all->player.raycast.v.y = all->player.y - all->player.raycast.v.y_offset;
+	}
+	else if (all->player.raycast.angle > (M_PI / 2) && all->player.raycast.angle < M_PI)
+	{
+		all->player.raycast.v.x = all->player.x - all->player.raycast.v.x_offset;
+		all->player.raycast.v.y = all->player.y - all->player.raycast.v.y_offset;
+	}
+	else if (all->player.raycast.angle > M_PI && all->player.raycast.angle < (M_PI * 1.5))
+	{
+		all->player.raycast.v.x = all->player.x - all->player.raycast.v.x_offset;
+		all->player.raycast.v.y = all->player.y + all->player.raycast.v.y_offset;
+	}
+	else if (all->player.raycast.angle > (M_PI * 1.5) && all->player.raycast.angle < (M_PI * 2))
+	{
+		all->player.raycast.v.x = all->player.x + all->player.raycast.v.x_offset;
+		all->player.raycast.v.y = all->player.y + all->player.raycast.v.y_offset;
 	}
 }
 
@@ -116,7 +142,7 @@ static void set_offset(t_all *all)
 	all->player.raycast.v.x_offset = 1 - delete_virgule(all->player.x);
 }
 
-void	drawray_hor(t_all *all)
+void	drawray_hor(t_all *all, double cond)
 {
 	int		i;
 	char	**map;
@@ -142,7 +168,7 @@ void	drawray_hor(t_all *all)
 		else
 		{
 			all->player.raycast.h.y += 1 * tan(all->player.raycast.angle);
-			all->player.raycast.h.x += 1;
+			all->player.raycast.h.x += cond;
 			all->player.raycast.h.mx = (int)all->player.raycast.h.x;
 			all->player.raycast.h.my = (int)all->player.raycast.h.y;
 			all->player.raycast.h.depth += 1;
@@ -175,7 +201,7 @@ void	drawray_ver(t_all *all)
 			all->player.raycast.v.depth = MAX_DEPTH;
 		else
 		{
-			all->player.raycast.v.y += 1;
+			all->player.raycast.v.y += all->player.raycast.v.y_offset;
 			all->player.raycast.v.x += 1 / tan(all->player.raycast.angle);
 			all->player.raycast.v.mx = (int)all->player.raycast.v.x;
 			all->player.raycast.v.my = (int)all->player.raycast.v.y;
@@ -184,11 +210,17 @@ void	drawray_ver(t_all *all)
 	}
 }
 
+
+// fonction pour calculer la distance du rayon
+// marche en calculant l'hypotenus
+// calcul rapide: hyp = racine de a^2 + b^2
+// comme on a 2 poitns et qu'il peuvent etre negatif:  
+//
 double		cal_hyp(double a, double b, double c, double d)
 {
-	int	ac;
-	int	bd;
-	int	result;
+	double	ac;
+	double	bd;
+	double	result;
 
 	ac = fabs(a - c);
 	bd = fabs(b - d);
@@ -248,10 +280,31 @@ void	draw_all(t_all *all)
 	}
 }
 
+void	drawraw_final(t_all *all)
+{
+	double	hit_vert;
+	double	hit_hor;
+	
+	hit_vert = cal_hyp(all->player.y, all->player.x, all->player.raycast.v.y, all->player.raycast.v.x);
+	hit_hor = cal_hyp(all->player.y, all->player.x, all->player.raycast.h.y, all->player.raycast.h.x);
+	printf("hit vertical: %f - hit horizontal: %f\n", hit_vert, hit_hor);
+	if (hit_vert < hit_hor)
+		printf("Vertical hit first\n");
+	else
+		printf("Horizontal hit first\n");
+}
+
 void	drawray(t_all *all)
 {
 	set_offset(all);
-	//drawray_hor(all);
-	//drawray_ver(all);
-	draw_all(all);
+	if (all->player.raycast.angle > (M_PI * 1.5) || all->player.raycast.angle < (M_PI / 2))
+		drawray_hor(all, 1);
+	else if (all->player.raycast.angle > M_PI && all->player.raycast.angle < (M_PI * 2))
+		drawray_hor(all, -1);
+	//if (all->player.raycast.angle < M_PI)
+		drawray_ver(all);
+	//else
+	//	drawray_ver(all);
+	// drawraw_final(all);
+	//draw_all(all);
 }
