@@ -230,10 +230,10 @@ double		cal_hyp(double a, double b, double c, double d)
 
 void	draw_all(t_all *all)
 {
-	int		i;
+	//int		i;
 	char	**map;
 
-	i = 0;
+	//i = 0;
 	map = all->map.map;
 	all->player.raycast.angle = all->player.angle;
 	set_offset(all);

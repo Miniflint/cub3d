@@ -40,6 +40,7 @@ int		__init_textures(t_all *all);
 t_data	*__img_init(void *mlx, int w, int h);
 // t_data	*__init__image(t_all *all, int width, int height);
 bool     open_xpm_images(t_all *all);
+int     __init_col(t_all *all);
 
 /* PARSING */
 int		check_ext(char *path);

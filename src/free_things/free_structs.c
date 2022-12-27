@@ -76,4 +76,5 @@ void	free_all(void)
 	all = ft_get_all(NULL);
 	free_textures(all);
 	free_map(all);
+	free_double_tab((char **) all->col);
 }

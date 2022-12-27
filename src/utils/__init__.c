@@ -101,6 +101,8 @@ int	__init__(t_all *all)
 		return (1);
 	if(__init_textures(all))
 		return (1);
+	if (__init_col(all))
+        return (1);
 	if(__init_player(all))
 		return (1);
 	if (__init_mlx(all))

@@ -12,6 +12,37 @@
 
 #include "../../inc/cub3d.h"
 
+void	ft_bzero(void *s, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		((char *)s)[i] = 0;
+		i++;
+	}
+}
+
+int __init_col(t_all *all)
+{
+	int i;
+
+	i = 0;
+    all->col = (t_col **) malloc(sizeof(t_col *) * (all->txtr.r_int[0] + 1));
+	//all->col[all->txtr.r_int[1]] = NULL;
+	ft_bzero(all->col, all->txtr.r_int[0] + 1);
+	while (all->col[++i] != NULL)
+	{
+		all->col[i]->x = 0;
+		all->col[i]->y = 0;
+		all->col[i]->tex_x = 0;
+		all->col[i]->tex_y = 0;
+		i++;
+	}
+	return (0);
+}
+
 // initialise les textures C et F en tant que int plutot que char *
 // avec 50k checks parce que j'ai eu des soucis aussi xDD
 // je hais le C
@@ -38,16 +69,14 @@ static int	__init__res(t_all *all)
 	return (0);
 }
 
-static int	__util_txtr_init(t_all *all)
-{
-	int	i;
-	char	*tmp[2];
+static int	__util_txtr_init(t_all *all) {
+	int i;
+	char *tmp[2];
 
 	i = -1;
 	tmp[0] = all->txtr.c;
 	tmp[1] = all->txtr.f;
-	while (++i < 3)
-	{
+	while (++i < 3) {
 		all->txtr.c_int[i] = ft_atoi(tmp[0]);
 		all->txtr.f_int[i] = ft_atoi(tmp[1]);
 		if (all->txtr.c_int[i] < 0 || all->txtr.f_int[i] < 0
@@ -61,18 +90,6 @@ static int	__util_txtr_init(t_all *all)
 	if (__init__res(all))
 		return (1);
 	return (0);
-}
-
-void	ft_bzero(void *s, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < n)
-	{
-		((char *)s)[i] = 0;
-		i++;
-	}
 }
 
 t_data	*__init_xpm_image(char *path, t_all *all)

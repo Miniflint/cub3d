@@ -14,9 +14,15 @@
 # define CUB3DSTRUCT_H
 
 # include "cub3d.h"
+typedef struct s_col
+{
+	double	x;
+	double	y;
+    double	tex_x;
+    double	tex_y;
+}	t_col;
 
-// je sais pas encore quoi mettre la dedans
-// mais je l'ai quand même crée parce qu'on sait jamais
+//je sais pas encore quoi mettre la deda// is je l'ai quand même crée parce qu'on sait jamais
 // quand j'en aurai besoin
 typedef struct S_hit_wall
 {
@@ -117,6 +123,7 @@ typedef struct S_all
 	char		*path_to_map;
 	t_map		map;
 	t_textures	txtr;
+    t_col       **col;
 	t_player	player;
 	t_mlx		mlx;
 }	t_all;
