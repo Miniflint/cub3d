@@ -101,8 +101,8 @@ void    plot_image(t_all *all);
 double		cal_hyp(double a, double b, double c, double d);
 
 /* DRAW */
-void    draw_cubes(t_all   *all, int *col_size, t_data *dst);
+void	draw_cubes(t_all *all, t_data *dst);
+void    draw_column_texture(t_all *all, t_data *dst, int x, int cube_height);
 int     get_col_text_pixel(t_data *img, int x, int y);
-void    draw_column_texture(t_data *src, t_data *dst, int x, int cube_height);
 
 #endif

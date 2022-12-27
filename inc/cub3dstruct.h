@@ -14,12 +14,11 @@
 # define CUB3DSTRUCT_H
 
 # include "cub3d.h"
+
 typedef struct s_col
 {
-	double	x;
-	double	y;
     double	tex_x;
-    double	tex_y;
+	t_data	*tex;
 }	t_col;
 
 //je sais pas encore quoi mettre la deda// is je l'ai quand même crée parce qu'on sait jamais

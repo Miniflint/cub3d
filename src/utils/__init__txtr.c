@@ -34,10 +34,8 @@ int __init_col(t_all *all)
 	ft_bzero(all->col, all->txtr.r_int[0] + 1);
 	while (all->col[++i] != NULL)
 	{
-		all->col[i]->x = 0;
-		all->col[i]->y = 0;
 		all->col[i]->tex_x = 0;
-		all->col[i]->tex_y = 0;
+		all->col[i]->tex = all->txtr.no_img;
 		i++;
 	}
 	return (0);

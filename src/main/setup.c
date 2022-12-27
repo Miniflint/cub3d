@@ -68,9 +68,7 @@ int	win_mlx_loop(t_all *all)
 	t_data	img;
 	int		x;
 	int		y;
-	int		*size_array;
 
-	size_array = NULL;
 	all->mlx.image = &img;
 	img = *(__img_init(all->mlx.mlx, all->txtr.r_int[0], all->txtr.r_int[1]));
 	//img.img = mlx_new_image(all->mlx.mlx, all->txtr.r_int[0], all->txtr.r_int[1]);
@@ -87,7 +85,7 @@ int	win_mlx_loop(t_all *all)
 	}
 	// assign_textures(all);
 	open_xpm_images(all);
-	draw_cubes(all, size_array, &img);
+	draw_cubes(all, &img);
 	mlx_put_image_to_window(all->mlx.mlx, all->mlx.window, img.img, 0, 0);
 //	drawRays2D(all, &img);
 	draw_map(all);
